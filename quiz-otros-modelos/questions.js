@@ -381,34 +381,6 @@ const QUESTIONS = [
     justification: 'ITmark Élite PUEDE aceptarse como equivalente en concursos públicos que piden "nivel 3 CMMI o equivalente", pero NO es una acreditación CMMI oficial. Son modelos independientes y complementarios.',
     trap: false
   },
-  {
-    category: 'itmark',
-    type: 'multi',
-    question: 'Para obtener Nivel 2 — Clase C en ITmark, ¿qué criterio deben cumplir las PAs?',
-    options: [
-      'Todas las PAs en verde',
-      'No más de 2 PAs <50%, y ninguna de las que falla puede ser PP ni PMC',
-      'Al menos 5 PAs en verde',
-      'Ninguna PA en rojo'
-    ],
-    correct: 1,
-    justification: 'Nivel 2 — Clase C: No más de 2 PAs por debajo del 50%, y ninguna de las que falla puede ser PP (Planificación de Proyecto) ni PMC (Monitorización y Control del Proyecto).',
-    trap: false
-  },
-  {
-    category: 'itmark',
-    type: 'multi',
-    question: 'Para obtener Nivel 3 en ITmark, ¿qué criterio deben cumplir las PAs?',
-    options: [
-      'No más de 3 PAs en rojo',
-      'Ningún PA en rojo y nº de PAs en verde ≥ 11',
-      'Todas las PAs con puntuación >80%',
-      'Al menos 7 PAs en verde y 4 en rojo'
-    ],
-    correct: 1,
-    justification: 'Para Nivel 3 en ITmark: Ningún PA en rojo Y número de PAs en verde ≥ 11. Es el nivel más exigente y el que se aproxima a CMMI nivel 3.',
-    trap: false
-  },
 
   // =============================================
   // ===== CATEGORÍA: SwTQM Y SOFTWARE DE CUENTA =====
@@ -459,52 +431,6 @@ const QUESTIONS = [
     correct: 1,
     justification: 'FALSO. SwTQM es un proyecto EUROPEO del ESI (European Software Institute) + EFQM, no americano del SEI. El SEI es el que desarrolló CMMI.',
     trap: true
-  },
-  {
-    category: 'swtqm',
-    type: 'multi',
-    question: '¿Qué es el modelo "Software de Cuenta"?',
-    options: [
-      'Un modelo del SEI para grandes empresas de EEUU',
-      'Un modelo del Instituto de Software Europeo + EFQM para proveedores de la administración pública española',
-      'Una certificación ISO para software bancario',
-      'Un marco de métricas de contabilidad'
-    ],
-    correct: 1,
-    justification: 'Software de Cuenta es un modelo del Instituto de Software Europeo + EFQM para proveedores de la administración pública española (empresas intensivas en desarrollo de software).',
-    trap: false
-  },
-  {
-    category: 'swtqm',
-    type: 'multi',
-    question: '¿Qué porcentaje del peso en Software de Cuenta corresponde a CMMI?',
-    options: [
-      '50%',
-      '86%',
-      '14%',
-      '30%'
-    ],
-    correct: 2,
-    justification: 'Solo el 14% del peso en Software de Cuenta es CMMI (proceso de desarrollo). El 86% restante son criterios EFQM: Liderazgo, Alianzas y recursos, Política y estrategia, Gestión de personas, Resultados, etc.',
-    trap: false
-  },
-  {
-    category: 'swtqm',
-    type: 'vf',
-    question: 'En Software de Cuenta, el 50% del peso corresponde a CMMI.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. Solo el 14% del peso es CMMI. El 86% restante son criterios EFQM. Esta es una trampa frecuente de examen.',
-    trap: true
-  },
-  {
-    category: 'swtqm',
-    type: 'vf',
-    question: 'En Software de Cuenta, el 86% son criterios EFQM.',
-    options: ['Verdadero', 'Falso'],
-    correct: 0,
-    justification: 'VERDADERO. El 86% del peso en Software de Cuenta son criterios EFQM (Liderazgo, Alianzas y recursos, Política y estrategia, etc.). Solo el 14% es CMMI (proceso de desarrollo).',
-    trap: false
   },
 
   // =============================================
@@ -841,84 +767,6 @@ const QUESTIONS = [
   },
   {
     category: 'metricas',
-    type: 'vf',
-    question: 'LOC es independiente del lenguaje de programación y la tecnología.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. LOC depende fuertemente del lenguaje de programación, del programador y de la tecnología. Por eso se usan Puntos Función, que SÍ son independientes de tecnología, lenguaje, método y plataforma.',
-    trap: true
-  },
-  {
-    category: 'metricas',
-    type: 'vf',
-    question: 'Puntos Función es una métrica independiente de tecnología y lenguaje de programación.',
-    options: ['Verdadero', 'Falso'],
-    correct: 0,
-    justification: 'VERDADERO. Puntos Función (Allan Albrecht, 1979) es una métrica estándar de tamaño del software que es independiente de tecnología, lenguaje, método de desarrollo y plataforma. Útil en todas las fases del ciclo de vida.',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'multi',
-    question: '¿Qué es el DRE (Defect Removal Efficiency)?',
-    options: [
-      'El coste total de eliminar defectos',
-      'La efectividad en la eliminación de defectos durante una fase: DRE = defectos eliminados / (eliminados + encontrados después)',
-      'El número absoluto de defectos por KLOC',
-      'El tiempo promedio para corregir un defecto'
-    ],
-    correct: 1,
-    justification: 'DRE = Defectos eliminados en la fase / (Defectos eliminados en la fase + Defectos encontrados más tarde). Cuanto más alto el DRE, más efectivo el proceso y menos defectos se transmiten a fases siguientes.',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'vf',
-    question: 'Un DRE alto implica que más defectos se transmiten a fases posteriores.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. Es al revés: DRE alto = MÁS efectivo = MENOS defectos transmitidos a fases siguientes. Un DRE alto significa que la fase eliminó la mayoría de los defectos.',
-    trap: true
-  },
-  {
-    category: 'metricas',
-    type: 'multi',
-    question: '¿Qué dice la "regla del 5x" sobre el coste de los defectos?',
-    options: [
-      'Un defecto cuesta 5 euros de media',
-      'Un defecto detectado en producción cuesta 5 veces más que uno detectado durante el desarrollo',
-      'Se necesitan 5 testers por cada desarrollador',
-      'Un proyecto tiene en media 5 defectos críticos'
-    ],
-    correct: 1,
-    justification: 'La regla del 5x: un defecto detectado en producción cuesta 5 veces más que uno detectado durante el desarrollo. Por eso hay que detectar defectos lo antes posible.',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'multi',
-    question: '¿Qué significa un valor > 1 en el Índice de Gestión del Trabajo Acumulado?',
-    options: [
-      'Se soluciona más rápido que la llegada (mejora)',
-      'Ritmo de corrección igual al de llegada (estable)',
-      'Se pierde capacidad de corrección (deterioro) — llegan más de los que se resuelven',
-      'El equipo tiene capacidad extra'
-    ],
-    correct: 2,
-    justification: 'Índice = problemas abiertos / problemas registrados por unidad de tiempo. >1 = deterioro (llegan más de los que se resuelven). =1 = estable. <1 = mejora (se resuelve más rápido que lo que llega).',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'vf',
-    question: 'En el índice de trabajo acumulado, un valor > 1 significa que se está corrigiendo más rápido de lo que llegan problemas.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. >1 = DETERIORO (llegan más problemas de los que se resuelven). <1 = mejora (se resuelve más rápido). =1 = estable.',
-    trap: true
-  },
-  {
-    category: 'metricas',
     type: 'multi',
     question: '¿A qué se dedica ISO 25000 (SQuaRE)?',
     options: [
@@ -949,135 +797,10 @@ const QUESTIONS = [
     justification: 'FALSO. ISO 25000 define métricas de calidad del PRODUCTO software, no del proceso ni del proyecto. La calidad del producto incluye 8 macro-características: Funcionalidad, Eficiencia, Compatibilidad, Usabilidad, Fiabilidad, Seguridad, Mantenibilidad, Portabilidad.',
     trap: true
   },
-  {
-    category: 'metricas',
-    type: 'vf',
-    question: 'Un defecto en producción cuesta 5 veces más que detectarlo durante el desarrollo.',
-    options: ['Verdadero', 'Falso'],
-    correct: 0,
-    justification: 'VERDADERO. La regla del 5x establece que un defecto en producción cuesta 5 veces más. También aplica al cliente: conseguir un cliente nuevo cuesta 5 veces más que mantener uno existente.',
-    trap: false
-  },
 
   // =============================================
   // ===== CATEGORÍA: GQM, PSM Y HERRAMIENTAS =====
   // =============================================
-
-  {
-    category: 'gqm-psm',
-    type: 'multi',
-    question: '¿Qué es GQM (Goal Question Metric)?',
-    options: [
-      'Un modelo bottom-up: Métrica → Pregunta → Meta',
-      'Un método top-down de Basili: Meta → Preguntas → Métricas',
-      'Una norma ISO para evaluación de procesos',
-      'Un framework de testing de software'
-    ],
-    correct: 1,
-    justification: 'GQM es un método top-down de Basili. Un programa de medición es más efectivo si se diseña orientado a metas: Meta → Preguntas → Métricas. Siempre en esa dirección, NUNCA al revés.',
-    trap: false
-  },
-  {
-    category: 'gqm-psm',
-    type: 'vf',
-    question: 'GQM parte de las métricas y deduce las metas.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. GQM es TOP-DOWN: Meta → Pregunta → Métrica. Se parte de las METAS y se deducen las preguntas y métricas necesarias. NUNCA al revés.',
-    trap: true
-  },
-  {
-    category: 'gqm-psm',
-    type: 'multi',
-    question: '¿Cuáles son los 5 campos de la plantilla GQM?',
-    options: [
-      'Quién, Qué, Cuándo, Dónde, Cómo',
-      'Analizar…, Con el propósito de…, Con respecto a…, Desde el punto de vista de…, En el contexto de…',
-      'Meta, Objetivo, Criterio, Métrica, Indicador',
-      'Plan, Acción, Verificación, Resultado, Mejora'
-    ],
-    correct: 1,
-    justification: 'La plantilla GQM tiene 5 campos: 1) Analizar… (objeto de estudio), 2) Con el propósito de… (entender/controlar/mejorar), 3) Con respecto a… (enfoque de calidad), 4) Desde el punto de vista de… (perspectiva), 5) En el contexto de… (entorno).',
-    trap: false
-  },
-  {
-    category: 'gqm-psm',
-    type: 'vf',
-    question: 'En GQM, cada pregunta se responde con exactamente UNA métrica.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. La relación es 1:N. Una pregunta puede requerir VARIAS métricas para ser respondida. También una métrica puede servir a varias preguntas.',
-    trap: true
-  },
-  {
-    category: 'gqm-psm',
-    type: 'multi',
-    question: '¿Qué es PSM (Practical Software Measurement)?',
-    options: [
-      'Un modelo top-down como GQM',
-      'Una guía práctica que materializa ISO/IEC 15939, con proceso continuo de gestión de la medición',
-      'Un estándar de calidad del producto',
-      'Un método de testing'
-    ],
-    correct: 1,
-    justification: 'PSM es una guía práctica impulsada por el DoD que materializa la norma ISO/IEC 15939 (Software Measurement Process). Tiene 2 componentes: modelo de proceso de medición y modelo de información.',
-    trap: false
-  },
-  {
-    category: 'gqm-psm',
-    type: 'vf',
-    question: 'PSM se basa en ISO/IEC 15939.',
-    options: ['Verdadero', 'Falso'],
-    correct: 0,
-    justification: 'VERDADERO. PSM (Practical Software Measurement) materializa la norma ISO/IEC 15939 (Software Measurement Process). Es impulsada por el Departamento de Defensa y el Ejército de EE.UU.',
-    trap: false
-  },
-  {
-    category: 'gqm-psm',
-    type: 'vf',
-    question: 'PSM es un modelo top-down como GQM.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. PSM añade un proceso continuo de gestión de la medición basado en ISO/IEC 15939 (iterativo: planificación → medición → análisis → evaluación). GQM es puramente top-down (Meta → Pregunta → Métrica).',
-    trap: true
-  },
-  {
-    category: 'gqm-psm',
-    type: 'multi',
-    question: '¿Cuáles son los 2 componentes de PSM?',
-    options: [
-      'Modelo de calidad y Modelo de testing',
-      'Modelo de proceso de medición y Modelo de información',
-      'Plantilla GQM y Cuadro de Mando',
-      'ISO 9001 y ISO 15939'
-    ],
-    correct: 1,
-    justification: 'PSM tiene 2 componentes: 1) Modelo de proceso de medición (fases y tareas iterativas) y 2) Modelo de información (relaciones entre conceptos de medición y terminología común).',
-    trap: false
-  },
-  {
-    category: 'gqm-psm',
-    type: 'multi',
-    question: '¿Cuál es la principal diferencia entre GQM y PSM?',
-    options: [
-      'GQM es para software; PSM es para hardware',
-      'GQM es top-down orientado a metas; PSM es un proceso continuo de gestión de la medición (ISO 15939)',
-      'GQM es más caro que PSM',
-      'PSM es más simple que GQM'
-    ],
-    correct: 1,
-    justification: 'GQM es un enfoque top-down orientado a metas (Basili): Meta → Pregunta → Métrica. PSM es un proceso continuo de gestión de la medición en la organización basado en ISO/IEC 15939.',
-    trap: false
-  },
-  {
-    category: 'gqm-psm',
-    type: 'vf',
-    question: 'GQM es siempre top-down: Meta → Pregunta → Métrica. NUNCA al revés.',
-    options: ['Verdadero', 'Falso'],
-    correct: 0,
-    justification: 'VERDADERO. GQM siempre es top-down: se parte de la Meta, se derivan Preguntas, y para cada pregunta se definen las Métricas necesarias. Nunca se empieza por las métricas.',
-    trap: false
-  },
 
   // =============================================
   // ===== CATEGORÍA: TRAMPAS DE EXAMEN =====
@@ -1149,15 +872,6 @@ const QUESTIONS = [
   {
     category: 'trampas',
     type: 'vf',
-    question: 'En Software de Cuenta el 50% del peso es CMMI.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. Solo el 14% es CMMI (proceso de desarrollo). El 86% restante son criterios EFQM.',
-    trap: true
-  },
-  {
-    category: 'trampas',
-    type: 'vf',
     question: 'Indicador es sinónimo de métrica.',
     options: ['Verdadero', 'Falso'],
     correct: 1,
@@ -1203,42 +917,6 @@ const QUESTIONS = [
   {
     category: 'trampas',
     type: 'vf',
-    question: 'PSM es un modelo top-down como GQM.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. PSM es un proceso continuo de gestión de medición (ISO 15939). GQM es puramente top-down (Meta → Pregunta → Métrica).',
-    trap: true
-  },
-  {
-    category: 'trampas',
-    type: 'vf',
-    question: 'GQM parte de las métricas y deduce las metas.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. Es al revés: GQM es top-down: Meta → Pregunta → Métrica. Siempre se parte de las METAS.',
-    trap: true
-  },
-  {
-    category: 'trampas',
-    type: 'vf',
-    question: 'En GQM cada pregunta se responde con UNA sola métrica.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. La relación es 1:N. Una pregunta puede requerir VARIAS métricas. También una métrica puede servir a varias preguntas.',
-    trap: true
-  },
-  {
-    category: 'trampas',
-    type: 'vf',
-    question: 'DRE alto implica que más defectos se transmiten a fases posteriores.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. Al revés: DRE alto = más efectivo = MENOS defectos transmitidos a fases siguientes.',
-    trap: true
-  },
-  {
-    category: 'trampas',
-    type: 'vf',
     question: 'La Ficha de Indicador del INCIBE es un estándar ISO oficial.',
     options: ['Verdadero', 'Falso'],
     correct: 1,
@@ -1252,33 +930,6 @@ const QUESTIONS = [
     options: ['Verdadero', 'Falso'],
     correct: 1,
     justification: 'FALSO. Es la organización más HABITUAL, pero NO es obligatoria. Cada empresa decide cómo organizar su catálogo.',
-    trap: true
-  },
-  {
-    category: 'trampas',
-    type: 'vf',
-    question: 'LOC es independiente del lenguaje y la tecnología.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. LOC depende fuertemente del lenguaje. Por eso se usan Puntos Función, que SÍ son independientes.',
-    trap: true
-  },
-  {
-    category: 'trampas',
-    type: 'vf',
-    question: 'Puntos Función es independiente de tecnología y lenguaje.',
-    options: ['Verdadero', 'Falso'],
-    correct: 0,
-    justification: 'VERDADERO. Puntos Función (Allan Albrecht, 1979) es una métrica estándar de tamaño independiente de tecnología, lenguaje, método y plataforma.',
-    trap: true
-  },
-  {
-    category: 'trampas',
-    type: 'vf',
-    question: 'En el índice de trabajo acumulado, valor > 1 significa corrección más rápida.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. >1 = DETERIORO (llegan más de los que se resuelven). <1 = mejora (se corrige más rápido que la llegada). =1 = estable.',
     trap: true
   },
   {
@@ -1322,19 +973,5 @@ const QUESTIONS = [
     correct: 2,
     justification: 'Si 0 = pruebas ejecutadas sin errores, el 0 es un RESULTADO VÁLIDO → escala de Intervalo. Si 0 = pruebas aún no ejecutadas (ausencia), sería Ratio. Confundir esto puede ser desastroso.',
     trap: true
-  },
-  {
-    category: 'trampas',
-    type: 'multi',
-    question: 'En la tabla comparativa de modelos, ¿cuál es el modelo pensado para proveedores de la administración pública española?',
-    options: [
-      'CMMI',
-      'ITmark',
-      'SwTQM',
-      'Software de Cuenta'
-    ],
-    correct: 3,
-    justification: 'Software de Cuenta es el modelo del Instituto de Software Europeo + EFQM diseñado específicamente para proveedores de la administración pública española. Solo el 14% del peso es CMMI.',
-    trap: false
   },
 ];

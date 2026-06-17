@@ -834,15 +834,6 @@ const QUESTIONS = [
   },
   {
     category: 'iso-estructura',
-    type: 'vf',
-    question: 'La medición de la satisfacción del cliente debe hacerse obligatoriamente mediante encuestas.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. ISO 9001 exige medir la satisfacción del cliente (apartado 8.2.1), pero NO obliga a hacerlo mediante encuestas. Puede medirse con cuota de mercado, quejas, fidelidad, informes comerciales, etc.',
-    trap: true
-  },
-  {
-    category: 'iso-estructura',
     type: 'multi',
     question: 'Según ISO 9001, ¿cuáles son las únicas pruebas obligatorias?',
     options: [
@@ -1168,34 +1159,6 @@ const QUESTIONS = [
   {
     category: 'metricas',
     type: 'multi',
-    question: '¿Cuántos campos estándar debe tener una ficha de métrica?',
-    options: [
-      '8: Nombre, Objetivo, Fórmula, Unidad de medida, Origen de datos, Datos de entrada, Periodo, Criterio de análisis.',
-      '5: Nombre, Fórmula, Unidad, Origen, Periodo.',
-      '3: Nombre, Fórmula, Criterio.',
-      '10: incluyendo responsable y presupuesto.'
-    ],
-    correct: 0,
-    justification: 'Una ficha tiene 8 campos: Nombre, Objetivo, Fórmula, Unidad de medida, Origen de datos, Datos de entrada, Periodo y Criterio de análisis. El más olvidado en examen: Criterio de análisis (sin él la métrica no es accionable).',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'multi',
-    question: '¿Cuál es el campo más olvidado en examen al definir una métrica?',
-    options: [
-      'Criterio de análisis — sin él la métrica no es accionable.',
-      'Nombre — se olvida dar un identificador.',
-      'Fórmula — no se especifica el cálculo.',
-      'Unidad de medida.'
-    ],
-    correct: 0,
-    justification: 'El campo más olvidado es el Criterio de análisis. Sin él no se sabe qué significa un valor bueno o malo ni cuál es el umbral aceptable, haciendo la métrica inútil para tomar decisiones.',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'multi',
     question: '¿Qué 5 áreas deben cubrir las métricas para una PYME con ISO 9000?',
     options: [
       'Proyecto, Producto, Proceso, Cliente y Mantenimiento.',
@@ -1205,62 +1168,6 @@ const QUESTIONS = [
     ],
     correct: 0,
     justification: 'Las 5 áreas: Proyecto, Producto, Proceso, Cliente y Mantenimiento. Estrategia PYME: métricas baratas, automatizables, alineadas con el apartado 8.',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'multi',
-    question: '¿Cuál es la fórmula de "Satisfacción del cliente"?',
-    options: [
-      'Nº respuestas "satisfecho" o "muy satisfecho" / Nº total de respuestas × 100.',
-      'Nº de reclamaciones / Nº total de clientes × 100.',
-      'Puntuación media en encuesta de 1 a 10.',
-      'Nº de clientes que repiten / Nº total de clientes × 100.'
-    ],
-    correct: 0,
-    justification: 'Fórmula: Nº respuestas positivas / Nº total × 100 (%). Criterio: ≥ 80% aceptable, 60-79% revisar, < 60% acción correctiva inmediata. Exigida por el apartado 8.',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'multi',
-    question: '¿Cuál es el criterio de análisis para "% de hitos cumplidos"?',
-    options: [
-      '≥ 90% = en control; 70-89% = revisar planificación; < 70% = replanificar y escalar.',
-      '100% es el único valor aceptable.',
-      '≥ 50% = aceptable.',
-      '≥ 80% = aceptable.'
-    ],
-    correct: 0,
-    justification: '≥ 90% = en control. 70-89% = revisar planificación. < 70% = replanificar y escalar al responsable de calidad. Fórmula: Hitos cumplidos en plazo / Hitos planificados × 100.',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'multi',
-    question: '¿Cuál es el criterio para "Desviación de esfuerzo"?',
-    options: [
-      '±10% = aceptable; +10% a +30% = revisar; > +30% = acción correctiva.',
-      '0% es lo único aceptable.',
-      '±5% = aceptable.',
-      '±20% = aceptable.'
-    ],
-    correct: 0,
-    justification: '±10% = aceptable. +10% a +30% = revisar estimaciones. > +30% = acción correctiva y replanificación. Fórmula: (Esfuerzo real − estimado) / estimado × 100.',
-    trap: false
-  },
-  {
-    category: 'metricas',
-    type: 'multi',
-    question: '¿Cuál es la fórmula de "Densidad de defectos"?',
-    options: [
-      'Nº defectos detectados / KLOC entregadas.',
-      'Nº defectos / Nº total de pruebas ejecutadas.',
-      'Nº defectos / Nº de módulos.',
-      'Nº defectos resueltos / Nº defectos totales × 100.'
-    ],
-    correct: 0,
-    justification: 'Densidad de defectos = Nº defectos / KLOC, en defectos por KLOC. Criterio: ≤ 5 defectos/KLOC = aceptable. > 5 = revisar proceso de codificación y pruebas.',
     trap: false
   },
   {
