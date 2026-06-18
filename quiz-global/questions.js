@@ -5,7 +5,7 @@ const CATEGORIES = [
   { id: 'iso-familia',    name: 'Familia ISO 9000',              icon: '📘' },
   { id: 'iso-estructura', name: 'Estructura ISO 9001',           icon: '🏗️' },
   { id: 'certificacion',  name: 'Certificación y Auditorías',    icon: '✅' },
-  { id: 'metricas',       name: 'Métricas de Calidad',           icon: '📊' },,
+  { id: 'metricas',       name: 'Métricas de Calidad',           icon: '📊' },
   { id: 'cmmi-intro',     name: 'Qué es CMMI',                icon: '🏛️' },
   { id: 'versiones',      name: 'Versiones y Evolución',       icon: '🔄' },
   { id: 'estructura',     name: 'Estructura de una PA',        icon: '🧱' },
@@ -13,7 +13,7 @@ const CATEGORIES = [
   { id: 'pas-ciclo',      name: 'PAs y Ciclo de Vida',         icon: '♻️' },
   { id: 'scampi',         name: 'SCAMPI y Tipos',              icon: '📋' },
   { id: 'evaluacion',     name: 'Evaluación CMMI',             icon: '🔎' },
-  { id: 'trampas',        name: 'Trampas de Examen',           icon: '⚠️' },,
+  { id: 'trampas',        name: 'Trampas de Examen',           icon: '⚠️' },
   { id: 'spice',         name: 'SPICE / ISO 15504',            icon: '🔬' },
   { id: 'mmis',          name: 'MMIS V.2',                     icon: '🧩' },
   { id: 'itmark',        name: 'ITmark',                       icon: '🏅' },
@@ -21,7 +21,7 @@ const CATEGORIES = [
   { id: 'medicion',      name: 'Medición y Escalas',           icon: '📏' },
   { id: 'metricas',      name: 'Tipos de Métrica',             icon: '📊' },
   { id: 'gqm-psm',       name: 'GQM, PSM y Herramientas',     icon: '🎯' },
-  { id: 'trampas',       name: 'Trampas de Examen',            icon: '⚠️' },,
+  { id: 'trampas',       name: 'Trampas de Examen',            icon: '⚠️' },
   { id: 'conceptos',       name: 'Conceptos Base',                icon: '📘' },
   { id: 'criterios',       name: '5 Criterios del Auditor',       icon: '🔍' },
   { id: 'roles',           name: 'Roles y Responsabilidades',     icon: '👥' },
@@ -1228,7 +1228,7 @@ let QUESTIONS = [
     correct: 0,
     justification: '≤ 5 defectos/KLOC = aceptable. > 5 defectos/KLOC = fuera de control → análisis de causa raíz y revisión de fases previas.',
     trap: false
-  },,
+  },
   {
     category: 'cmmi-intro',
     type: 'multi',
@@ -3854,7 +3854,7 @@ let QUESTIONS = [
     correct: 2,
     justification: 'Si 0 = pruebas ejecutadas sin errores, el 0 es un RESULTADO VÁLIDO → escala de Intervalo. Si 0 = pruebas aún no ejecutadas (ausencia), sería Ratio. Confundir esto puede ser desastroso.',
     trap: true
-  },,
+  },
   // =============================================
   // ===== CATEGORÍA: CONCEPTOS BASE =====
   // =============================================
