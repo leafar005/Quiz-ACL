@@ -38,7 +38,7 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 1000px;
       width: 100%;
       padding: 40px;
       box-sizing: border-box;
@@ -62,8 +62,19 @@
 
     .quiz-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 1fr;
       gap: 24px;
+    }
+    @media (max-width: 850px) {
+      .quiz-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .quiz-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .quiz-card {
@@ -146,13 +157,7 @@
       opacity: 0.8;
     }
 
-    @media (min-width: 664px) {
-      .quiz-card:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
-        justify-self: center;
-        width: calc(50% - 12px);
-      }
-    }
+    /* Removed odd child spanning logic since we now use a 3-column layout */
   </style>
 </head>
 <body>
@@ -198,6 +203,12 @@
           <option value="100">100 preguntas</option>
         </select>
       </div>
+
+      <a href="banco-preguntas/index.html" class="quiz-card" style="border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);">
+        <div class="icon">📚</div>
+        <h2 class="quiz-title">Banco de Preguntas</h2>
+        <p class="quiz-desc">Lista completa de todas las preguntas con sus soluciones, ordenadas por temario.</p>
+      </a>
     </div>
 
     <div class="github-link">
