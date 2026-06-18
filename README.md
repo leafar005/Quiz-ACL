@@ -22,12 +22,8 @@ El proyecto ha sido desarrollado utilizando tecnologías web estándar sin depen
 
 ## 🚀 Cómo Empezar
 
-No es necesaria ninguna instalación o servidor local para utilizar la aplicación. 
-
-1. Clona el repositorio o descarga los archivos.
-2. Abre el archivo `index.html` directamente en tu navegador web de preferencia (Chrome, Firefox, Safari, Edge).
-3. Selecciona el módulo que deseas estudiar y ¡comienza el test!
+Solo abre el enlace colega😭😭
 
 ## 👨‍💻 Autor
 
-Desarrollado por [leafar005](https://github.com/leafar005).
+Desarrollado por leafar005 con gemini (yo tambien tengo que estudiar el examen okey no tengo tiempo para hacerlo a mano).
