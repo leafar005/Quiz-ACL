@@ -1,6 +1,6 @@
 # Portal de Encuestas ACL 2026
 
-Portal interactivo diseñado para facilitar el estudio y la preparación de la asignatura **ACL** (Aseguramiento de la Calidad del Software). Permite acceder a múltiples cuestionarios interactivos organizados por temáticas y realizar simulacros.
+Portal interactivo diseñado para facilitar el estudio y la preparación de la asignatura **ACL** (Aseguramiento de la Calidad del Software). Permite acceder a múltiples cuestionarios interactivos organizados por temáticas y realizar simulacros. Quería hacer cualquier tontería para estudiar mejor la recu y se me fue de las manos.
 
 ## 📚 Módulos Disponibles
 
@@ -12,13 +12,26 @@ El portal cuenta con cuestionarios específicos para los siguientes temas:
 - 📋 **Auditorías Internas (PAI)**: Cuestionario dedicado al Plan de Auditorías Internas, cubriendo Verificaciones de Fase, Auditorías Generales y gestión de No Conformidades.
 - 🌍 **Encuesta Global**: Un simulacro general que extrae 50 preguntas de forma aleatoria de todos los módulos anteriores, ideal para la preparación final.
 
+## 🚀 Nuevas Características (v2.1.0)
+
+Esta última versión convierte la plataforma en una herramienta de estudio mucho más avanzada y gamificada:
+
+- 📊 **Panel de Rendimiento Global**: Sistema de estadísticas que guarda tu progreso en el almacenamiento local del navegador (`localStorage`).
+  - **Historial de Tests**: Registra todos los simulacros realizados, tu nota, tiempo invertido y te permite revisar exactamente qué preguntas te salieron.
+  - **Historial de Preguntas**: Un registro individual de las últimas preguntas contestadas, con la opción de desplegar la respuesta correcta y la justificación.
+  - **Sistema de Logros 🏆**: 12 logros desbloqueables basados en tu rendimiento (acertar sin fallos, estudiar de madrugada, hacer test súper rápido, etc.).
+- 🔎 **Banco de Preguntas Unificado**: Un buscador global interactivo para buscar conceptos clave entre todas las preguntas de la base de datos de forma instantánea.
+- ☀️/🌙 **Modo Claro/Oscuro**: Toggle global persistente para alternar entre los dos modos de visualización.
+- 🧪 **Testing E2E**: Integración con **Playwright** para garantizar el funcionamiento automático de todos los flujos principales y navegación de menús.
+
 ## 💻 Tecnologías
 
-El proyecto ha sido desarrollado utilizando tecnologías web estándar sin dependencias externas complejas:
+El proyecto ha sido desarrollado utilizando tecnologías web estándar sin dependencias externas complejas (a excepción del entorno de pruebas):
 
 - **HTML5**: Estructuración semántica de las páginas.
-- **CSS3**: Diseño moderno con estilo *Glassmorphism*, *Dark Mode* por defecto, variables CSS y diseño completamente responsivo adaptado a dispositivos móviles.
-- **JavaScript Vanilla**: Lógica de funcionamiento de los cuestionarios, incluyendo la selección de preguntas aleatorias, puntuación en tiempo real y retroalimentación inmediata.
+- **CSS3**: Diseño moderno con estilo *Glassmorphism*, *Dark Mode* por defecto (con toggle para Light Mode), variables CSS y diseño completamente responsivo adaptado a dispositivos móviles.
+- **JavaScript Vanilla**: Lógica de funcionamiento de los cuestionarios, incluyendo la selección de preguntas aleatorias, puntuación en tiempo real, persistencia de datos (localStorage) y retroalimentación inmediata.
+- **Playwright**: Framework de pruebas End-to-End automatizadas.
 
 ## 🚀 Cómo Empezar
 
