@@ -1,0 +1,24 @@
+{
+  "name": "quiz-acl",
+  "version": "1.0.0",
+  "description": "Portal interactivo diseñado para facilitar el estudio y la preparación de la asignatura **ACL** (Aseguramiento de la Calidad del Software). Permite acceder a múltiples cuestionarios interactivos organizados por temáticas y realizar simulacros.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leafar005/Quiz-ACL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leafar005/Quiz-ACL/issues"
+  },
+  "homepage": "https://github.com/leafar005/Quiz-ACL#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "http-server": "^14.1.1"
+  }
+}
