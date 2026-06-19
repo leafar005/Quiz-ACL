@@ -260,7 +260,7 @@
       topic: 'pai', 
       text: q.question,
       justification: q.justification,
-      correctAnswer: displayOptions[correctIndex].text
+      correctAnswer: q.options[q.correct]
     });
 
     // Update scores in header
@@ -406,7 +406,7 @@
         text: q.question,
         isCorrect: ans.isCorrect,
         justification: q.justification,
-        correctAnswer: ans.displayOptions.find(o => o.isCorrect).text
+        correctAnswer: q.options[q.correct]
       };
     });
 
