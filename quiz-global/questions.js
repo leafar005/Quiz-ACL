@@ -3910,11 +3910,8 @@ let QUESTIONS = [
     category: 'conceptos',
     type: 'vf',
     question: 'Una auditoría interna es aseguramiento de calidad.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Una auditoría interna es aseguramiento de calidad (QA). Verifica que se siguen los procesos, procedimientos, plantillas y registros del SGC. NO comprueba si el producto está técnicamente bien — eso es control de calidad (QC).',
     trap: true
   },
@@ -3951,11 +3948,8 @@ let QUESTIONS = [
     category: 'conceptos',
     type: 'vf',
     question: 'Las auditorías internas nunca se realizan por sorpresa y deben planificarse con antelación.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Las auditorías NUNCA son por sorpresa. Deben planificarse con antelación y comunicarse a los afectados. El auditado necesita preparar documentación y dedicar tiempo (3+ horas, entrevistas, etc.).',
     trap: true
   },
@@ -3963,11 +3957,8 @@ let QUESTIONS = [
     category: 'conceptos',
     type: 'vf',
     question: 'Una auditoría interna puede ser por sorpresa si el auditor es personal interno de la empresa.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Las auditorías NUNCA son por sorpresa, independientemente de si el auditor es interno o externo. Siempre deben planificarse con antelación y comunicarse a los afectados.',
     trap: true
   },
@@ -4005,11 +3996,8 @@ let QUESTIONS = [
     category: 'conceptos',
     type: 'vf',
     question: 'Para auditar departamentos como RRHH, que no están proyectizados, es necesario realizar Auditorías Generales (AG).',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Si solo auditas proyectos (VF), los departamentos nunca se auditan, lo que constituiría una no conformidad mayúscula. Por eso existen las Auditorías Generales (AG), para cubrir áreas no proyectizadas.',
     trap: true
   },
@@ -4035,11 +4023,8 @@ let QUESTIONS = [
     category: 'criterios',
     type: 'vf',
     question: 'Un auditor nunca puede auditar su propio departamento, independientemente de su experiencia en auditorías.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. El primer criterio del auditor es ser independiente del área, proyecto o proceso que va a auditar. La experiencia en auditorías no exime del requisito de independencia.',
     trap: true
   },
@@ -4047,11 +4032,8 @@ let QUESTIONS = [
     category: 'criterios',
     type: 'vf',
     question: 'Los 5 criterios del auditor aplican solo al Auditor Técnico de verificación de fase.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Los 5 criterios aplican a CUALQUIER auditor, tanto Técnico (VF) como de Sistemas (AG). No se puede saltar ningún criterio.',
     trap: true
   },
@@ -4073,11 +4055,8 @@ let QUESTIONS = [
     category: 'criterios',
     type: 'vf',
     question: 'El auditor de un procedimiento no puede coincidir con el revisor del mismo procedimiento.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. El auditor debe ser ajeno/independiente del área auditada. Si es revisor del procedimiento, pierde la imparcialidad requerida por el criterio de independencia.',
     trap: true
   },
@@ -4099,11 +4078,8 @@ let QUESTIONS = [
     category: 'criterios',
     type: 'vf',
     question: 'Una auditoría interna puede ser realizada por personal del propio departamento auditado si tiene competencia técnica.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. El auditor debe ser AJENO al área auditada, incluso siendo personal interno de la empresa. La imparcialidad es un requisito fundamental irrenunciable.',
     trap: true
   },
@@ -4185,11 +4161,8 @@ let QUESTIONS = [
     category: 'roles',
     type: 'vf',
     question: 'El informe de auditoría lo elabora y lo aprueba el Responsable de Calidad.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. El informe lo ELABORA el auditor (Técnico o de Sistemas) y lo remite al Responsable de Calidad. El RC lo REVISA y APRUEBA, pero no lo elabora. Son funciones distintas.',
     trap: true
   },
@@ -4239,11 +4212,8 @@ let QUESTIONS = [
     category: 'roles',
     type: 'vf',
     question: 'El procedimiento de auditorías internas lo aprueba el Responsable de Calidad.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. El Responsable de Calidad REVISA el procedimiento (PAI). Quien lo APRUEBA es el Director General, que tiene potestad sobre la empresa.',
     trap: true
   },
@@ -4339,11 +4309,8 @@ let QUESTIONS = [
     category: 'vf',
     type: 'vf',
     question: 'La reducción a 2 VFs en proyectos pequeños no requiere ninguna aprobación especial.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. La reducción a 2 VFs debe justificarse en el plan de proyecto y requiere la aprobación del Responsable de Calidad.',
     trap: true
   },
@@ -4365,11 +4332,8 @@ let QUESTIONS = [
     category: 'vf',
     type: 'vf',
     question: 'En una verificación de fase se realiza reunión inicial y reunión final.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. En las verificaciones de fase NO hay reunión inicial ni reunión final. Las reuniones son exclusivas de las Auditorías Generales (AG). En VF, la frecuencia es alta y el equipo ya conoce el proceso.',
     trap: true
   },
@@ -4419,11 +4383,8 @@ let QUESTIONS = [
     category: 'vf',
     type: 'vf',
     question: 'El informe de VF se elabora completamente al final de la auditoría, tras reunir todas las evidencias.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. El informe se va construyendo DURANTE la auditoría, anotando cada no conformidad con su evidencia objetiva EN EL MOMENTO. Si se espera al final, se corre el riesgo de perder evidencias.',
     trap: true
   },
@@ -4477,11 +4438,8 @@ let QUESTIONS = [
     category: 'ag',
     type: 'vf',
     question: 'En una auditoría general, la fecha es inamovible y no se puede negociar.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Si la fecha comunicada no conviene al área, se puede acordar otra entre el Responsable de Calidad y el responsable del área auditada.',
     trap: true
   },
@@ -4531,11 +4489,8 @@ let QUESTIONS = [
     category: 'ag',
     type: 'vf',
     question: 'La auditoría general no requiere reunión inicial porque el área ya conoce sus procesos.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. La AG SÍ requiere reunión inicial (convocada por el Auditor de Sistemas). La frecuencia menor de las AG hace que el personal pueda no estar familiarizado con el proceso de auditoría.',
     trap: true
   },
@@ -4631,11 +4586,8 @@ let QUESTIONS = [
     category: 'nc',
     type: 'vf',
     question: 'Una observación de auditoría se clasifica como no conformidad leve.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Una observación NO es no conformidad. Es una situación que podría derivar en incumplimiento, o una oportunidad de mejora. No tiene la clasificación grave/leve.',
     trap: true
   },
@@ -4657,11 +4609,8 @@ let QUESTIONS = [
     category: 'nc',
     type: 'vf',
     question: 'Ante una NC Grave, el proyecto continúa normalmente mientras se planifica la corrección.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Si la NC es Grave, se PARA el proyecto o actividad hasta arreglarla. Si es necesaria replanificación, se genera una nueva versión del plan.',
     trap: true
   },
@@ -4683,11 +4632,8 @@ let QUESTIONS = [
     category: 'nc',
     type: 'vf',
     question: 'Las no conformidades las clasifica unilateralmente el auditor, sin consultar al auditado.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Las acciones correctivas se ACUERDAN entre el auditor y el auditado (JP en VF, responsable del área en AG). No es una decisión unilateral del auditor.',
     trap: true
   },
@@ -4695,11 +4641,8 @@ let QUESTIONS = [
     category: 'nc',
     type: 'vf',
     question: 'La acción correctiva busca eliminar la causa raíz de la no conformidad.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. La acción correctiva ataja la no conformidad EN SÍ. Es la acción PREVENTIVA la que busca eliminar la causa raíz. En ISO 9001:2015, la preventiva se sustituye por gestión de riesgos.',
     trap: true
   },
@@ -4721,11 +4664,8 @@ let QUESTIONS = [
     category: 'nc',
     type: 'vf',
     question: 'Una sugerencia de mejora del SGC origina una acción correctiva.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Una sugerencia de mejora origina una acción PREVENTIVA (problema potencial), no correctiva. La acción correctiva solo se origina ante una no conformidad REAL detectada en auditoría.',
     trap: true
   },
@@ -4794,11 +4734,8 @@ let QUESTIONS = [
     category: 'informes',
     type: 'vf',
     question: 'El informe de auditoría lo firma el auditor junto al Responsable de Calidad.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. El auditor NO lo firma junto a Calidad. Lo elabora solo y lo remite al Responsable de Calidad para revisión y aprobación. Son pasos separados.',
     trap: true
   },
@@ -4821,11 +4758,8 @@ let QUESTIONS = [
     category: 'informes',
     type: 'vf',
     question: 'Las actas de reunión inicial y final son salidas tanto de VF como de AG.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Las actas de reunión inicial y final son salidas SOLO de AG. En VF no hay reunión inicial ni final.',
     trap: true
   },
@@ -4879,11 +4813,8 @@ let QUESTIONS = [
     category: 'entradas-salidas',
     type: 'vf',
     question: 'La "información de entrada para la revisión por la dirección" es una salida del proceso de auditorías internas.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Los resultados de las auditorías y la efectividad de las acciones correctivas se agregan como información de entrada para la revisión periódica del SGC por la dirección.',
     trap: false
   },
@@ -4961,11 +4892,8 @@ let QUESTIONS = [
     category: 'entradas-salidas',
     type: 'vf',
     question: 'El mecanismo de control del procedimiento de auditorías internas es que el Responsable de Calidad proporciona datos a la dirección para la revisión periódica anual del SGC.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Este es el ÚNICO mecanismo de control: el RC agrega resultados de auditorías (VF + AG) y efectividad de acciones correctivas, y los presenta en la revisión anual del SGC por la dirección.',
     trap: false
   },
@@ -5019,11 +4947,8 @@ let QUESTIONS = [
     category: 'diferencias',
     type: 'vf',
     question: 'Las verificaciones de fase tienen reunión inicial y final, igual que las auditorías generales.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Las VF NO tienen reunión inicial ni final (frecuencia alta, el equipo ya conoce el proceso). Las AG SÍ tienen ambas reuniones (frecuencia menor, el personal puede no estar familiarizado).',
     trap: true
   },
@@ -5059,11 +4984,8 @@ let QUESTIONS = [
     category: 'diferencias',
     type: 'vf',
     question: 'El mismo auditor puede hacer tanto verificaciones de fase como auditorías generales.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Son perfiles distintos: el Auditor Técnico (VF) necesita conocimientos en desarrollo software, mientras que el Auditor de Sistemas (AG) necesita conocimientos del área que audita. No son intercambiables.',
     trap: true
   },
@@ -5071,11 +4993,8 @@ let QUESTIONS = [
     category: 'diferencias',
     type: 'vf',
     question: 'El seguimiento y cierre formal de acciones correctivas lo realiza el Responsable de Calidad solo en las VF, no en las AG.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. El seguimiento y cierre formal lo realiza el Responsable de Calidad en AMBOS casos (VF y AG). Es una responsabilidad constante del RC.',
     trap: true
   },
@@ -5083,11 +5002,8 @@ let QUESTIONS = [
     category: 'diferencias',
     type: 'vf',
     question: 'Las auditorías internas (tanto VF como AG) nunca son por sorpresa.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Ni las VF ni las AG pueden ser por sorpresa. Siempre se planifican con antelación y se comunican a los afectados.',
     trap: false
   },
@@ -5109,11 +5025,8 @@ let QUESTIONS = [
     category: 'diferencias',
     type: 'vf',
     question: 'Si auditor y auditado no se ponen de acuerdo en las acciones correctivas, escalan al Director General.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. El acuerdo SE ASUME en el procedimiento. NO se debe documentar la opción de escalar a dirección. Si se pone, se ejecutará y desacredita al responsable de calidad.',
     trap: true
   },
@@ -5121,11 +5034,8 @@ let QUESTIONS = [
     category: 'diferencias',
     type: 'vf',
     question: 'El perfil del Auditor de VF requiere conocimientos en desarrollo software, mientras que el de AG requiere conocimientos del área auditada.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. El Auditor Técnico (VF) necesita conocimientos en desarrollo software. El Auditor de Sistemas (AG) necesita conocimientos del área que audita (RRHH, compras, etc.), no necesariamente de software.',
     trap: false
   },
@@ -5161,11 +5071,8 @@ let QUESTIONS = [
     category: 'diferencias',
     type: 'vf',
     question: 'Las plantillas de auditoría obligan a usarlas: cuantas más se aporten, mejor preparada estará la organización.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Las plantillas obligan a usarlas, por lo tanto cuantas más pongas, más te atas. Se recomienda usar solo las plantillas mínimas necesarias (portada del informe).',
     trap: true
   },
@@ -5173,11 +5080,8 @@ let QUESTIONS = [
     category: 'diferencias',
     type: 'vf',
     question: 'Las evidencias en auditoría deben anotarse con su no conformidad EN EL MOMENTO, no al final.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Cada NC se anota con su evidencia objetiva EN EL MOMENTO durante la ejecución de la auditoría. Si se espera al final, se corre el riesgo de perder evidencias.',
     trap: false
   },
@@ -5185,11 +5089,8 @@ let QUESTIONS = [
     category: 'diferencias',
     type: 'vf',
     question: 'Los registros de calidad se pueden modificar si se documenta adecuadamente el cambio.',
-    options: [
-      'Falso',
-      'Verdadero'
-    ],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Un registro de calidad NO se modifica NUNCA. Es histórico: aporta evidencia objetiva de actividades realizadas. Solo se puede anular y reemitir con trazabilidad.',
     trap: true
   },
@@ -5636,8 +5537,8 @@ let QUESTIONS = [
     category: 'procedimientos',
     type: 'vf',
     question: 'El manual de procedimientos es conocimiento privado de la organización y NO se debe entregar al cliente.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'FALSO. El manual de procedimientos es conocimiento privado de la empresa (know-how) y NO se entrega al cliente.',
     trap: true
   },
@@ -5645,8 +5546,8 @@ let QUESTIONS = [
     category: 'procedimientos',
     type: 'vf',
     question: 'El plan de calidad es un documento particular para un proyecto concreto, a diferencia del manual de calidad que es único para la organización.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. El plan de calidad aplica las directrices del SGC a un escenario/proyecto particular.',
     trap: true
   },
@@ -5654,8 +5555,8 @@ let QUESTIONS = [
     category: 'procedimientos',
     type: 'vf',
     question: 'El cliente puede tener acceso al Sistema de Información de Errores (SIE).',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. El cliente puede y debe poder acceder al SIE para poder introducir y seguir las incidencias.',
     trap: false
   },
@@ -5663,8 +5564,8 @@ let QUESTIONS = [
     category: 'mapas',
     type: 'vf',
     question: 'Un mapa de procesos IDEF0 debe ser autoexplicativo, por lo que NO debe requerir notas al pie.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Si necesitas incluir una nota al pie para explicar algo, significa que el mapa de procesos no es lo suficientemente claro y debe rediseñarse.',
     trap: true
   },
@@ -5672,8 +5573,8 @@ let QUESTIONS = [
     category: 'mapas',
     type: 'vf',
     question: 'En un mapa de procesos IDEF0, los checklist o listas de chequeo se representan como mecanismos de control (flecha entrando por debajo).',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Los checklist son mecanismos que guían y controlan la ejecución del proceso, no entradas transformables.',
     trap: true
   },
@@ -5681,8 +5582,8 @@ let QUESTIONS = [
     category: 'procedimientos',
     type: 'vf',
     question: 'Las desviaciones concertadas al SGC (por ejemplo, si un cliente exige su propio procedimiento) se recogen en el Manual de Procedimientos de la empresa.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Se recogen en el Plan de Calidad particular de ese proyecto, no en el Manual general de la empresa.',
     trap: true
   },
@@ -5690,8 +5591,8 @@ let QUESTIONS = [
     category: 'ciclo-pruebas',
     type: 'vf',
     question: 'Las pruebas de unidad e integración deben documentarse obligatoriamente en el Sistema de Información de Errores (SIE).',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Sólo las pruebas de sistema y aceptación (donde participa cliente / entorno real) van al SIE. El coste/beneficio en una PYME no compensa meter las unitarias al SIE.',
     trap: true
   },
@@ -5699,8 +5600,8 @@ let QUESTIONS = [
     category: 'ciclo-pruebas',
     type: 'vf',
     question: 'La línea base de producto se establece cuando se pasan satisfactoriamente las pruebas de unidad e integración.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Se establece al pasar satisfactoriamente las pruebas de SISTEMA, y a partir de ahí se realizan las de aceptación.',
     trap: true
   },
@@ -5710,8 +5611,8 @@ let QUESTIONS = [
     category: 'informes',
     type: 'vf',
     question: 'Las tres fechas de la portada del TGR (autor, revisor, aprobador) deben ser obligatoriamente distintas.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Se exige que sean distintas para evidenciar una secuencia lógica e independiente de elaboración, revisión y aprobación.',
     trap: true
   },
@@ -5719,8 +5620,8 @@ let QUESTIONS = [
     category: 'informes',
     type: 'vf',
     question: 'Se recomienda incluir en los anexos únicamente las plantillas mínimas imprescindibles, ya que aportar demasiadas ata a la organización.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Las plantillas anexadas son de uso obligatorio; cuantas más pongas, más burocracia generas ("cuantas más pongas, más te atas").',
     trap: true
   },
@@ -5728,8 +5629,8 @@ let QUESTIONS = [
     category: 'informes',
     type: 'vf',
     question: 'El apartado de responsabilidades (6) de un procedimiento puede y debe redactarse antes que el cuerpo (10) para definir primero los perfiles.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Es incoherente. Hay que conocer primero qué tareas hay (redactando el cuerpo 10) para luego poder asignar esas responsabilidades a los perfiles (apartado 6).',
     trap: true
   },
@@ -5737,8 +5638,8 @@ let QUESTIONS = [
     category: 'informes',
     type: 'vf',
     question: 'En el apartado de procedimientos relacionados de una auditoría interna, conviene listar el SGC completo para no olvidar ninguna referencia cruzada.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Se listan solo los estrictamente necesarios (Guía de ciclo, gestión de proyectos, revisión entregables, correctivas/preventivas). Poner todo el SGC es un error.',
     trap: true
   },
@@ -5746,8 +5647,8 @@ let QUESTIONS = [
     category: 'nc',
     type: 'vf',
     question: 'Una acción preventiva es la que busca eliminar la causa raíz de una posible no conformidad para evitar que llegue a ocurrir.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. La acción correctiva soluciona un problema que YA ha ocurrido. La preventiva ataca el origen/causa raíz ANTES de que el problema ocurra.',
     trap: true
   },
@@ -5755,8 +5656,8 @@ let QUESTIONS = [
     category: 'nc',
     type: 'vf',
     question: 'Una mejora potencial sugerida por un desarrollador para optimizar un proceso debe originar una hoja de acción preventiva (o de mejora).',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Al no haber un problema o desviación real, sino una oportunidad de optimización, se canaliza como acción preventiva.',
     trap: true
   },
@@ -5764,8 +5665,8 @@ let QUESTIONS = [
     category: 'ag',
     type: 'vf',
     question: 'Las solicitudes de formación que el responsable de calidad rechaza se deben registrar con justificación detallada en un acta formal.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Se rechaza, se comunica el motivo al solicitante (como todo), pero NO hace falta levantar un acta formal con registro. El proceso termina ahí.',
     trap: true
   },
@@ -5773,8 +5674,8 @@ let QUESTIONS = [
     category: 'nc',
     type: 'vf',
     question: 'Si durante una verificación de fase el auditor y el auditado no se ponen de acuerdo respecto a una no conformidad, el procedimiento debe contemplar escalar el problema al director general.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. En el procedimiento NO se debe dar la alternativa de escalar, porque si la das, se usará siempre. El acuerdo entre auditor y auditado SE ASUME.',
     trap: true
   },
@@ -5784,8 +5685,8 @@ let QUESTIONS = [
     category: 'seccion7',
     type: 'vf',
     question: 'En ISO 9001 sólo se puede adquirir software o materiales a proveedores que hayan sido previamente evaluados y aceptados en la base de datos de la organización.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. El apartado 7.4 exige que la organización evalúe y seleccione a los proveedores en función de su capacidad, manteniendo un registro de los aprobados.',
     trap: true
   },
@@ -5793,8 +5694,8 @@ let QUESTIONS = [
     category: 'seccion7',
     type: 'vf',
     question: 'El software freeware u Open Source no se considera producto adquirido porque no implica un intercambio monetario o transacción.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Sí se considera producto adquirido. Lo vas a incorporar a tu producto final y asumes responsabilidad sobre su calidad ante el cliente, aunque sea gratuito.',
     trap: true
   },
@@ -5802,8 +5703,8 @@ let QUESTIONS = [
     category: 'seccion8',
     type: 'vf',
     question: 'ISO 9001 exige recopilar datos sobre la satisfacción del cliente, pero permite que el método utilizado (encuestas, entrevistas, etc.) sea de libre elección.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. La norma no impone el uso de encuestas; se puede usar el análisis de reclamaciones, retención de clientes u otras vías.',
     trap: true
   },
@@ -5811,8 +5712,8 @@ let QUESTIONS = [
     category: 'seccion8',
     type: 'vf',
     question: 'La validación de los procesos de producción es necesaria únicamente cuando el resultado resultante no puede verificarse mediante actividades de seguimiento o medición posteriores.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Esta es la definición literal del apartado de validación de procesos de producción (ej: soldadura o fraguado de hormigón, donde no puedes medir la calidad hasta que el producto está terminado y a veces destruyéndolo).',
     trap: false
   },
@@ -5820,8 +5721,8 @@ let QUESTIONS = [
     category: 'familia',
     type: 'vf',
     question: 'La norma UNE-EN ISO 9000 contiene y especifica todos los requisitos obligatorios de gestión de calidad.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. ISO 9000 es la norma de VOCABULARIO y fundamentos. La que contiene los requisitos obligatorios y certificables es ISO 9001.',
     trap: true
   },
@@ -5830,8 +5731,8 @@ let QUESTIONS = [
     category: 'familia',
     type: 'vf',
     question: 'La guía ISO 90003 (antes 9003) puede utilizarse como criterio oficial para emitir un certificado de calidad a una empresa de software.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Es una guía de interpretación para aplicar ISO 9001 al desarrollo de software. No se certifica ISO 90003, te certificas por ISO 9001.',
     trap: true
   },
@@ -5949,8 +5850,8 @@ let QUESTIONS = [
     category: 'medicion',
     type: 'vf',
     question: 'La norma ISO/IEC 25000 (SQuaRE) define un conjunto de métricas dedicadas a medir la calidad del PROCESO de desarrollo de software.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. La ISO 25000 mide la calidad del PRODUCTO software (funcionalidad, usabilidad, seguridad, etc.), no del proceso.',
     trap: true
   },
@@ -5958,8 +5859,8 @@ let QUESTIONS = [
     category: 'medicion',
     type: 'vf',
     question: 'Para aplicar un catálogo de métricas en un SGC, el examen exige conocer y memorizar las fórmulas complejas de todas las métricas ISO/IEC.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Del catálogo de métricas sólo hay que entender el concepto y su utilidad como herramienta de Measurement & Analysis, no memorizar las fórmulas concretas.',
     trap: true
   },
@@ -5968,8 +5869,8 @@ let QUESTIONS = [
     category: 'medicion',
     type: 'vf',
     question: 'La "Ficha de Indicador" (como el modelo de INCIBE) es un concepto que define una plantilla para documentar rigurosamente cómo se recoge, calcula y analiza una métrica.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Define campos como objetivo, fórmula, escala, frecuencia y responsables. No hace falta memorizar los 20 campos, pero sí saber qué es.',
     trap: false
   },

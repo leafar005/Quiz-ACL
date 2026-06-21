@@ -1046,8 +1046,8 @@ const QUESTIONS = [
     category: 'medicion',
     type: 'vf',
     question: 'La norma ISO/IEC 25000 (SQuaRE) define un conjunto de métricas dedicadas a medir la calidad del PROCESO de desarrollo de software.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. La ISO 25000 mide la calidad del PRODUCTO software (funcionalidad, usabilidad, seguridad, etc.), no del proceso.',
     trap: true
   },
@@ -1055,8 +1055,8 @@ const QUESTIONS = [
     category: 'medicion',
     type: 'vf',
     question: 'Para aplicar un catálogo de métricas en un SGC, el examen exige conocer y memorizar las fórmulas complejas de todas las métricas ISO/IEC.',
-    options: ['Falso', 'Verdadero'],
-    correct: 0,
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
     justification: 'FALSO. Del catálogo de métricas sólo hay que entender el concepto y su utilidad como herramienta de Measurement & Analysis, no memorizar las fórmulas concretas.',
     trap: true
   },
@@ -1065,8 +1065,8 @@ const QUESTIONS = [
     category: 'medicion',
     type: 'vf',
     question: 'La "Ficha de Indicador" (como el modelo de INCIBE) es un concepto que define una plantilla para documentar rigurosamente cómo se recoge, calcula y analiza una métrica.',
-    options: ['Falso', 'Verdadero'],
-    correct: 1,
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
     justification: 'VERDADERO. Define campos como objetivo, fórmula, escala, frecuencia y responsables. No hace falta memorizar los 20 campos, pero sí saber qué es.',
     trap: false
   },
