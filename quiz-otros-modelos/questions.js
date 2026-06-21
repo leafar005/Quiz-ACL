@@ -12,6 +12,21 @@ const CATEGORIES = [
   { id: 'metricas',      name: 'Tipos de Métrica',             icon: '📊' },
   { id: 'gqm-psm',       name: 'GQM, PSM y Herramientas',     icon: '🎯' },
   { id: 'trampas',       name: 'Trampas de Examen',            icon: '⚠️' },
+  {
+    isDefinition: true,
+    category: 'medicion',
+    type: 'multi',
+    question: '¿Cómo se define una "Métrica" en Ingeniería del Software?',
+    options: [
+      'Una estimación del coste futuro de desarrollo de una aplicación web.',
+      'Un diagrama cualitativo de la estructura del software.',
+      'Una medida cuantitativa del grado en que un sistema, componente o proceso posee un atributo dado.',
+      'El peso en bytes del código fuente compilado exclusivamente.'
+    ],
+    correct: 2,
+    justification: 'Una métrica en IS es una medida siempre CUANTITATIVA que permite evaluar un atributo específico (esfuerzo, complejidad, densidad de defectos, etc.).',
+    trap: false
+  },
 ];
 
 const QUESTIONS = [
@@ -48,12 +63,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las dos dimensiones de SPICE?',
     options: [
-      'Modelo de desarrollo (CMMI) y Modelo de servicios (ITIL)',
-      'Modelo de calidad (ISO 9001) y Modelo de certificación (ISO 17021)',
       'Modelo de procesos (ISO 12207) y Modelo de evaluación (ISO 15504)',
-      'Modelo técnico y Modelo organizativo'
+      'Modelo de desarrollo (CMMI) y Modelo de servicios (ITIL)',
+      'Modelo técnico y Modelo organizativo',
+      'Modelo de calidad (ISO 9001) y Modelo de certificación (ISO 17021)'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'SPICE tiene dos dimensiones: el Modelo de procesos (¿Qué procesos hay? → ISO 12207 para software) y el Modelo de evaluación (¿Cómo se valoran? → ISO 15504, sustituida por ISO 33000).',
     trap: false
   },
@@ -80,12 +95,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántas partes tiene la norma ISO/IEC 15504?',
     options: [
-      '5 partes',
-      '10 partes',
       '7 partes',
-      '3 partes'
+      '3 partes',
+      '10 partes',
+      '5 partes'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'ISO/IEC 15504 tiene 7 partes: 1-Conceptos y vocabulario, 2-Realización de la evaluación, 3-Guía de evaluación, 4-Guía de mejora, 5-Ejemplo de modelo de evaluación, 6-Ejemplo de evaluación del ciclo de vida, 7-Evaluación de la madurez.',
     trap: false
   },
@@ -94,10 +109,10 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los dos esquemas de aplicación de SPICE?',
     options: [
-      'Benchmark y Evaluation',
       'SCAMPI A y SCAMPI B',
+      'ISO 9001 y ISO 14001',
       'AENOR (ligero) y PathFinder (pesado)',
-      'ISO 9001 y ISO 14001'
+      'Benchmark y Evaluation'
     ],
     correct: 2,
     justification: 'Los dos esquemas son PathFinder (pesado, basado en ISO 12207:1995) y AENOR (ligero, basado en ISO 12207:2008). NO son equivalentes entre sí: difieren en coste, rigor y aplicación.',
@@ -117,12 +132,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos procesos evalúa el esquema AENOR en cada nivel? (mnemónico clave)',
     options: [
-      '2 / 5 / 8',
-      '5 / 10 / 15',
       '3 / 7 / 11',
+      '5 / 10 / 15',
+      '2 / 5 / 8',
       '4 / 8 / 12'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Mnemónico clave: 3 procesos en nivel 1, 7 en nivel 2, 11 en nivel 3. Es un dato que suele caer en examen.',
     trap: false
   },
@@ -131,9 +146,9 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 3 procesos del Nivel 1 del esquema AENOR?',
     options: [
-      'PP, ECP, GC',
       'RQU, RQSIS, MED',
       'ACS, GC, MED',
+      'PP, ECP, GC',
       'SUM, MCV, GCS'
     ],
     correct: 3,
@@ -145,12 +160,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 7 procesos del Nivel 2 del esquema AENOR?',
     options: [
-      'SUM, MCV, GCS, PP, ECP, GC, MED',
       'RQU, RQSIS, PP, ECP, GC, MED, ACS',
-      'Todos los del nivel 1 más 4 adicionales',
-      'Análisis, Diseño, Integración, Verificación, Validación, Gestión, Riesgos'
+      'Análisis, Diseño, Integración, Verificación, Validación, Gestión, Riesgos',
+      'SUM, MCV, GCS, PP, ECP, GC, MED',
+      'Todos los del nivel 1 más 4 adicionales'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Nivel 2: RQU (Definición de Requisitos de Usuario), RQSIS (Análisis de Requisitos del Sistema), PP (Planificación del Proyecto), ECP (Evaluación y Control del Proyecto), GC (Gestión de la Configuración), MED (Medición), ACS (Aseguramiento de la Calidad Software).',
     trap: false
   },
@@ -168,12 +183,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué norma ha sustituido a ISO 15504 como modelo de evaluación?',
     options: [
-      'ISO 9001',
       'ISO 33000',
       'ISO 25000',
+      'ISO 9001',
       'ISO 27000'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'ISO 15504 ha sido sustituida por la familia ISO 33000 como modelo de evaluación de procesos. MMIS V.2 ya utiliza ISO 33000 en lugar de ISO 15504.',
     trap: false
   },
@@ -211,9 +226,9 @@ const QUESTIONS = [
     question: '¿Cuántos procesos define ISO/IEC 12207:2017 que usa MMIS V.2?',
     options: [
       '21 procesos',
+      '11 procesos',
       '25 procesos',
-      '16 procesos',
-      '11 procesos'
+      '16 procesos'
     ],
     correct: 0,
     justification: 'ISO/IEC 12207:2017 define 21 procesos, que MMIS V.2 usa como modelo de procesos (la dimensión "qué procesos hay").',
@@ -224,12 +239,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los componentes de ISO 33000 que usa MMIS V.2?',
     options: [
-      'ISO 33001, ISO 33010, ISO 33050',
-      'ISO 33100, ISO 33200, ISO 33300',
       'ISO 33002 (proceso de evaluación), ISO 33003 (requisitos de medición), ISO 33020 (marco de medición)',
-      'Solo ISO 33000 como norma única'
+      'Solo ISO 33000 como norma única',
+      'ISO 33100, ISO 33200, ISO 33300',
+      'ISO 33001, ISO 33010, ISO 33050'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'MMIS V.2 usa tres componentes de ISO 33000: ISO 33002 (proceso de evaluación), ISO 33003 (requisitos de medición) e ISO 33020 (marco de medición — métricas para valorar evidencias).',
     trap: false
   },
@@ -238,12 +253,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos niveles de madurez tiene MMIS V.2?',
     options: [
-      '4 niveles',
       '5 niveles (Básico, Gestionado, Establecido, Predecible, Innovado)',
+      '6 niveles',
       '3 niveles',
-      '6 niveles'
+      '4 niveles'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'MMIS V.2 tiene 5 niveles de madurez: 1-Básico, 2-Gestionado, 3-Establecido, 4-Predecible, 5-Innovado. Usa una estructura de "capas de cebolla": niveles de madurez (organización) + niveles de capacidad (por proceso).',
     trap: false
   },
@@ -252,12 +267,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué estructura tiene MMIS V.2 para combinar niveles de madurez y capacidad?',
     options: [
-      'Estructura piramidal (como CMMI Staged)',
       'Estructura de "capas de cebolla": niveles de madurez (organización) + niveles de capacidad (por proceso)',
-      'Estructura matricial 2D',
-      'Estructura plana sin niveles'
+      'Estructura piramidal (como CMMI Staged)',
+      'Estructura plana sin niveles',
+      'Estructura matricial 2D'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'MMIS V.2 utiliza una estructura de "capas de cebolla" que combina niveles de madurez (a nivel de organización) con niveles de capacidad (por proceso individual).',
     trap: false
   },
@@ -280,12 +295,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Para qué tipo de empresas está diseñado ITmark?',
     options: [
-      'Solo para empresas del sector público',
-      'PYMEs y micro-empresas (<10 empleados), aunque también es aplicable a grandes',
       'Solo para grandes corporaciones multinacionales',
-      'Solo para empresas del sector bancario'
+      'Solo para empresas del sector bancario',
+      'Solo para empresas del sector público',
+      'PYMEs y micro-empresas (<10 empleados), aunque también es aplicable a grandes'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'ITmark está diseñado para PYMEs y micro-empresas (<10 empleados), aunque también es aplicable a empresas grandes. Sirve como pasarela previa a CMMI: ITmark primero, CMMI después.',
     trap: false
   },
@@ -303,12 +318,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las 3 áreas que evalúa ITmark?',
     options: [
-      'Procesos de gestión y desarrollo de software (CMMI-DEV), Gestión del negocio (EFQM/ISO 9000), Gestión de la seguridad (ISO 27000)',
-      'Producto, Proyecto, Proceso',
+      'Calidad, Coste, Tiempo',
       'Desarrollo, Testing, Despliegue',
-      'Calidad, Coste, Tiempo'
+      'Producto, Proyecto, Proceso',
+      'Procesos de gestión y desarrollo de software (CMMI-DEV), Gestión del negocio (EFQM/ISO 9000), Gestión de la seguridad (ISO 27000)'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'ITmark evalúa 3 áreas: 1) Procesos de gestión y desarrollo de software (modelo: CMMI-DEV niveles 2 y 3), 2) Procesos de gestión del negocio (EFQM / ISO 9000), 3) Procesos de gestión de la seguridad (ISO/IEC 27000).',
     trap: false
   },
@@ -359,11 +374,11 @@ const QUESTIONS = [
     question: 'ITmark sirve como…',
     options: [
       'Modelo exclusivo para el sector público',
-      'Pasarela previa a CMMI: ITmark primero, CMMI después',
+      'Alternativa a ISO 9001 en auditorías oficiales',
       'Sustituto definitivo de CMMI',
-      'Alternativa a ISO 9001 en auditorías oficiales'
+      'Pasarela previa a CMMI: ITmark primero, CMMI después'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'ITmark sirve como pasarela previa a CMMI: primero se obtiene ITmark y después se puede avanzar hacia CMMI. Es un reconocimiento de Excelencia en TI diseñado para PYMEs.',
     trap: false
   },
@@ -372,12 +387,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En concursos públicos que piden "nivel 3 CMMI o equivalente", ¿qué papel juega ITmark Élite?',
     options: [
-      'No puede usarse en ningún caso',
       'Puede aceptarse como equivalente, pero NO es acreditación CMMI oficial',
       'Solo sirve para empresas con más de 100 empleados',
-      'Es exactamente igual que CMMI nivel 3'
+      'Es exactamente igual que CMMI nivel 3',
+      'No puede usarse en ningún caso'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'ITmark Élite PUEDE aceptarse como equivalente en concursos públicos que piden "nivel 3 CMMI o equivalente", pero NO es una acreditación CMMI oficial. Son modelos independientes y complementarios.',
     trap: false
   },
@@ -391,12 +406,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué modelos combina SwTQM?',
     options: [
-      'ISO 15504 y ISO 12207',
       'CMMI (mejora de procesos) + EFQM (excelencia en gestión del negocio)',
-      'ISO 9001 y ISO 27001',
-      'SPICE y ITmark'
+      'ISO 15504 y ISO 12207',
+      'SPICE y ITmark',
+      'ISO 9001 y ISO 27001'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'SwTQM combina CMMI (mejora de procesos de desarrollo, adquisición y mantenimiento) con EFQM (excelencia en gestión del negocio — European Quality Award). Lema: atención a resultados del negocio sin olvidar la operativa de los procesos.',
     trap: false
   },
@@ -443,12 +458,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 4 objetivos de medir según la teoría?',
     options: [
+      'Documentar, Archivar, Reportar, Presentar',
       'Analizar, Controlar, Predecir, Mejorar',
-      'Planificar, Ejecutar, Verificar, Actuar',
       'Medir, Comparar, Optimizar, Certificar',
-      'Documentar, Archivar, Reportar, Presentar'
+      'Planificar, Ejecutar, Verificar, Actuar'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'Los 4 objetivos de medir son: 1) Analizar (entender qué ocurre), 2) Controlar (controlar qué ocurre), 3) Predecir (estimar tiempo, coste, esfuerzo), 4) Mejorar (mejorar procesos y productos con datos).',
     trap: false
   },
@@ -457,12 +472,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la diferencia entre "Medida" y "Medición"?',
     options: [
-      'Medida es el proceso; Medición es el resultado',
       'Son sinónimos',
+      'Medida es el RESULTADO; Medición es el PROCESO/ALGORITMO para obtenerlo',
       'Medida se aplica a software; Medición a hardware',
-      'Medida es el RESULTADO; Medición es el PROCESO/ALGORITMO para obtenerlo'
+      'Medida es el proceso; Medición es el resultado'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Medida = el RESULTADO (indicación sobre un atributo, ej: "50 errores"). Medición = el PROCESO/ALGORITMO (conjunto de operaciones para obtener la medida, ej: ejecutar la herramienta de recuento).',
     trap: false
   },
@@ -471,12 +486,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la diferencia entre "Métrica" e "Indicador"?',
     options: [
-      'La métrica es cualitativa; el indicador es cuantitativo',
-      'El indicador es la fórmula; la métrica incluye la interpretación',
+      'La métrica es la FÓRMULA; el indicador es la métrica + criterios de análisis (interpretación y acciones)',
       'Son sinónimos, no hay diferencia',
-      'La métrica es la FÓRMULA; el indicador es la métrica + criterios de análisis (interpretación y acciones)'
+      'La métrica es cualitativa; el indicador es cuantitativo',
+      'El indicador es la fórmula; la métrica incluye la interpretación'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'Métrica = la FÓRMULA que describe un atributo (ej: "25% de desviación"). Indicador = métrica + criterios de análisis (ej: "25% desviación; si <20% continuar, 20–50% replanificar, >50% cancelar").',
     trap: false
   },
@@ -495,12 +510,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las 4 escalas de medida?',
     options: [
-      'Continua, Discreta, Categórica, Temporal',
-      'Nominal, Ordinal, Intervalo, Razón (Ratio)',
       'Alta, Media, Baja, Nula',
-      'Binaria, Decimal, Hexadecimal, Octal'
+      'Binaria, Decimal, Hexadecimal, Octal',
+      'Continua, Discreta, Categórica, Temporal',
+      'Nominal, Ordinal, Intervalo, Razón (Ratio)'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Las 4 escalas de medida son: 1) Nominal (categorías, solo = y ≠), 2) Ordinal (orden, <, >), 3) Intervalo (+ y −, 0 es valor real), 4) Razón/Ratio (todas las operaciones, 0 = ausencia).',
     trap: false
   },
@@ -509,12 +524,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué operaciones permite la escala Nominal?',
     options: [
-      '=, ≠, +, − (suma y resta)',
       'Todas: =, ≠, <, >, +, −, ×, ÷',
       '=, ≠, <, > (orden)',
-      'Solo = y ≠ (igualdad y desigualdad)'
+      'Solo = y ≠ (igualdad y desigualdad)',
+      '=, ≠, +, − (suma y resta)'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'La escala Nominal solo permite clasificar en categorías exclusivas con operaciones = y ≠ (igualdad y desigualdad). No hay orden ni operaciones matemáticas. Ej: tipo de ciclo (Scrum/Waterfall).',
     trap: false
   },
@@ -524,11 +539,11 @@ const QUESTIONS = [
     question: '¿Qué operaciones permite la escala Ordinal?',
     options: [
       'Solo = y ≠',
-      '=, ≠, +, − (suma y resta)',
+      '=, ≠, <, > (orden, pero NO suma ni resta)',
       'Todas las operaciones',
-      '=, ≠, <, > (orden, pero NO suma ni resta)'
+      '=, ≠, +, − (suma y resta)'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'La escala Ordinal permite: =, ≠, <, > (orden). NO permite operaciones matemáticas como suma o resta. No se puede afirmar que CMMI4−CMMI3 = CMMI5−CMMI4. Ej: niveles CMMI 1<2<3<4<5.',
     trap: false
   },
@@ -578,12 +593,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué escala de medida representan los niveles de CMMI (1, 2, 3, 4, 5)?',
     options: [
-      'Nominal (solo categorías)',
       'Ordinal (hay orden pero no se pueden sumar/restar niveles)',
+      'Razón (0 absoluto y todas las operaciones)',
       'Intervalo (se pueden sumar y restar)',
-      'Razón (0 absoluto y todas las operaciones)'
+      'Nominal (solo categorías)'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Los niveles CMMI son escala ORDINAL: hay un orden (1<2<3<4<5) pero NO se pueden hacer operaciones matemáticas. No se puede afirmar que la diferencia entre nivel 4 y 3 sea igual que entre nivel 5 y 4.',
     trap: false
   },
@@ -593,9 +608,9 @@ const QUESTIONS = [
     question: '¿Qué es un catálogo de métricas?',
     options: [
       'Una colección organizada de las métricas que usa una organización, típicamente en categorías Producto/Proyecto/Proceso',
-      'Un estándar ISO que obliga a usar métricas específicas',
+      'Un listado de certificaciones de calidad',
       'Una base de datos de errores del software',
-      'Un listado de certificaciones de calidad'
+      'Un estándar ISO que obliga a usar métricas específicas'
     ],
     correct: 0,
     justification: 'Un catálogo de métricas es una colección organizada de las métricas que usa la organización. La organización habitual es en 3 categorías (Producto/Proyecto/Proceso), pero NO es obligatoria: cada empresa decide cómo organizarlo.',
@@ -611,22 +626,20 @@ const QUESTIONS = [
     trap: true
   },
   {
-    isEnumeration: true,
     category: 'medicion',
     type: 'multi',
     question: '¿Qué es la Ficha de Indicador del INCIBE?',
     options: [
-      'Un certificado de calidad del software',
-      'Un formulario obligatorio de la administración pública',
       'Una plantilla habitual (~20 campos) para documentar indicadores, pero NO es un estándar ISO oficial',
+      'Un formulario obligatorio de la administración pública',
+      'Un certificado de calidad del software',
       'Un estándar ISO oficial para definir métricas'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'La Ficha de Indicador es una plantilla del INCIBE (Instituto Nacional de Ciberseguridad) con ~20 campos para documentar indicadores. NO es un estándar ISO oficial. Es la plantilla más habitual y cada empresa decide qué campos usa.',
     trap: false
   },
   {
-    isEnumeration: true,
     category: 'medicion',
     type: 'vf',
     question: 'La Ficha de Indicador del INCIBE es un estándar ISO oficial.',
@@ -642,8 +655,8 @@ const QUESTIONS = [
     options: [
       'Key Product Indicators — métricas de calidad del producto',
       'Key Performance Indicators — factores críticos para el éxito del negocio',
-      'Key Project Items — entregables del proyecto',
-      'Key Process Inspections — auditorías de procesos'
+      'Key Process Inspections — auditorías de procesos',
+      'Key Project Items — entregables del proyecto'
     ],
     correct: 1,
     justification: 'KPIs = Key Performance Indicators (Indicadores Clave de Rendimiento). Son los factores críticos para el éxito del negocio. Se monitorizan mediante el Cuadro de Mando integral (Balanced Scorecard).',
@@ -654,12 +667,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué es un Cuadro de Mando integral (Balanced Scorecard)?',
     options: [
-      'Un informe de auditoría externa',
+      'Una herramienta que monitoriza, controla y gestiona procesos a través de KPIs',
       'Un documento de requisitos del software',
-      'Un certificado de calidad ISO',
-      'Una herramienta que monitoriza, controla y gestiona procesos a través de KPIs'
+      'Un informe de auditoría externa',
+      'Un certificado de calidad ISO'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'El Cuadro de Mando integral (Balanced Scorecard) monitoriza, controla y gestiona procesos a través de KPIs. En empresas de software suele ser un proyecto interno hecho a medida.',
     trap: false
   },
@@ -683,11 +696,11 @@ const QUESTIONS = [
     question: '¿Qué diferencia hay entre una métrica directa y una indirecta?',
     options: [
       'Directa es para productos; indirecta es para procesos',
-      'Directa se mide en campo; indirecta se calcula en oficina',
       'Directa no depende de otras métricas y se mide directamente; indirecta es combinación matemática de varias directas',
-      'Directa es objetiva; indirecta es subjetiva'
+      'Directa es objetiva; indirecta es subjetiva',
+      'Directa se mide en campo; indirecta se calcula en oficina'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Directa (simple): no depende de otras métricas, se mide directamente (ej: LOC, nº requisitos). Indirecta (compuesta): combinación matemática de varias directas (ej: Satisfacción = f(tiempo + quejas + clientes perdidos)).',
     trap: false
   },
@@ -697,8 +710,8 @@ const QUESTIONS = [
     question: '¿Qué diferencia hay entre una métrica estática y una dinámica?',
     options: [
       'No hay diferencia, son sinónimos',
-      'Estática es para código; dinámica es para procesos',
       'Estática cambia con el tiempo; dinámica no',
+      'Estática es para código; dinámica es para procesos',
       'Estática mide un atributo en un momento específico; dinámica mide el cambio de una cantidad por unidad de otra variable'
     ],
     correct: 3,
@@ -729,11 +742,11 @@ const QUESTIONS = [
     question: '¿Qué diferencia hay entre "Ratio" y "Proporción" (ambas estáticas)?',
     options: [
       'Ratio es directa; Proporción es indirecta',
-      'Son sinónimos',
       'Ratio se mide en %; Proporción en números enteros',
-      'En un Ratio, numerador y denominador son EXCLUYENTES; en una Proporción, el numerador es PARTE del denominador'
+      'En un Ratio, numerador y denominador son EXCLUYENTES; en una Proporción, el numerador es PARTE del denominador',
+      'Son sinónimos'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Ratio: numerador y denominador son EXCLUYENTES (sin intersección), NO se convierte en %. Ej: personas en pruebas / personas en desarrollo. Proporción: numerador es PARTE del denominador, SÍ se puede expresar en %. Ej: clientes satisfechos / total clientes.',
     trap: false
   },
@@ -760,12 +773,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de estos es un ejemplo de métrica directa?',
     options: [
-      'Densidad de defectos (defectos / KLOC)',
       'LOC (líneas de código) — se mide directamente sin depender de otras',
       'DRE (Defect Removal Efficiency)',
+      'Densidad de defectos (defectos / KLOC)',
       'Satisfacción del cliente (combinación de encuesta + quejas + fidelización)'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'LOC es una métrica directa (simple): se mide directamente sin depender de otras métricas. Las demás opciones son indirectas (compuestas): combinan varias métricas directas mediante fórmulas.',
     trap: false
   },
@@ -775,11 +788,11 @@ const QUESTIONS = [
     question: '¿A qué se dedica ISO 25000 (SQuaRE)?',
     options: [
       'Es un estándar de seguridad informática',
+      'Define procesos de gestión de proyectos',
       'Define métricas de calidad del proceso de desarrollo',
-      'Define métricas para medir la calidad del PRODUCTO software (no proceso, no proyecto)',
-      'Define procesos de gestión de proyectos'
+      'Define métricas para medir la calidad del PRODUCTO software (no proceso, no proyecto)'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'ISO 25000 (SQuaRE = System and Software Quality Requirements and Evaluation) define métricas para medir la calidad del PRODUCTO software. Es evolución de ISO 9126 e ISO 14598. No mide procesos ni proyectos.',
     trap: false
   },
@@ -919,7 +932,6 @@ const QUESTIONS = [
     trap: true
   },
   {
-    isEnumeration: true,
     category: 'trampas',
     type: 'vf',
     question: 'La Ficha de Indicador del INCIBE es un estándar ISO oficial.',
@@ -943,11 +955,11 @@ const QUESTIONS = [
     question: '¿Cuál de estas afirmaciones es CORRECTA?',
     options: [
       'SPICE es específico para software',
-      'ITmark cubre solo desarrollo',
       'MMIS V.2 reemplaza ISO 15504 por ISO 33000',
-      'ISO 25000 define métricas de calidad del proceso'
+      'ISO 25000 define métricas de calidad del proceso',
+      'ITmark cubre solo desarrollo'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'MMIS V.2 efectivamente reemplaza ISO 15504 por ISO 33000. Las demás son falsas: SPICE es genérico, ITmark cubre 3 áreas, e ISO 25000 define métricas del PRODUCTO (no proceso).',
     trap: true
   },
@@ -956,27 +968,26 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de estas afirmaciones sobre escalas de medida es FALSA?',
     options: [
-      'Ratio: el 0 es un valor real (no ausencia)',
-      'Ordinal permite <, > pero no suma/resta',
+      'Nominal solo permite = y ≠',
       'Intervalo: el 0 es un valor real',
-      'Nominal solo permite = y ≠'
+      'Ordinal permite <, > pero no suma/resta',
+      'Ratio: el 0 es un valor real (no ausencia)'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'En Ratio el 0 indica AUSENCIA de valor (0 absoluto), no es "un valor real". El 0 como valor real es propio de la escala de Intervalo (ej: 0°C existe como temperatura).',
     trap: true
   },
   {
-    isEnumeration: true,
     category: 'trampas',
     type: 'multi',
     question: 'Un profesor dice: "nº de errores en pruebas = 0". ¿Qué escala usa si 0 = pruebas ejecutadas sin errores?',
     options: [
-      'Nominal',
+      'Intervalo (0 = resultado válido, pruebas ejecutadas)',
       'Ordinal',
       'Ratio (0 = ausencia, pruebas no ejecutadas)',
-      'Intervalo (0 = resultado válido, pruebas ejecutadas)'
+      'Nominal'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'Si 0 = pruebas ejecutadas sin errores, el 0 es un RESULTADO VÁLIDO → escala de Intervalo. Si 0 = pruebas aún no ejecutadas (ausencia), sería Ratio. Confundir esto puede ser desastroso.',
     trap: true
   },
@@ -988,12 +999,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Según el modelo ITmark para PYMEs, ¿cuáles son las tres áreas principales de gestión que se evalúan?',
     options: [
+      'Desarrollo de software (CMMI), Recursos Humanos (People CMM) y Riesgos Financieros (ISO 31000).',
       'Desarrollo ágil (Scrum), Gestión del negocio (EFQM) y Mantenimiento (ITIL).',
       'Desarrollo de software (CMMI), Gestión del negocio (EFQM/ISO 9000) y Seguridad de la información (ISO 27000).',
-      'Calidad del producto (ISO 25000), Gestión del negocio (ISO 9000) y Seguridad (ISO 27000).',
-      'Desarrollo de software (CMMI), Recursos Humanos (People CMM) y Riesgos Financieros (ISO 31000).'
+      'Calidad del producto (ISO 25000), Gestión del negocio (ISO 9000) y Seguridad (ISO 27000).'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'ITmark evalúa desarrollo (basado en CMMI), negocio (EFQM/ISO 9000) y seguridad de la información (ISO 27000).',
     trap: false
   },
@@ -1004,11 +1015,11 @@ const QUESTIONS = [
     question: '¿Cuáles son los tres niveles de certificación que propone el modelo ITmark en orden ascendente?',
     options: [
       'Plata, Oro y Platino.',
+      'Inicial, Gestionado y Optimizado.',
       'Básico, Premium y Élite.',
-      'Nivel 1, Nivel 2 y Nivel 3.',
-      'Inicial, Gestionado y Optimizado.'
+      'Nivel 1, Nivel 2 y Nivel 3.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'ITmark tiene tres niveles: Básico (I.T. Mark), Premium y Élite.',
     trap: false
   },
@@ -1018,12 +1029,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 4 objetivos fundamentales de la medición en ingeniería del software?',
     options: [
-      'Analizar, Codificar, Testear y Desplegar.',
-      'Planificar, Hacer, Verificar y Actuar (PDCA).',
       'Medir, Auditar, Certificar y Facturar.',
-      'Analizar, Controlar, Predecir y Mejorar.'
+      'Planificar, Hacer, Verificar y Actuar (PDCA).',
+      'Analizar, Controlar, Predecir y Mejorar.',
+      'Analizar, Codificar, Testear y Desplegar.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Los 4 objetivos según Deming/PSM son: Analizar, Controlar, Predecir (estimar) y Mejorar.',
     trap: false
   },
@@ -1033,12 +1044,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las 4 escalas de medida estandarizadas en orden de menor a mayor capacidad matemática?',
     options: [
-      'Nominal, Ordinal, Intervalo y Razón (Ratio).',
-      'Numérica, Alfabética, Binaria y Compleja.',
       'Discreta, Continua, Estática y Dinámica.',
-      'Absoluta, Relativa, Porcentual y Fraccionaria.'
+      'Absoluta, Relativa, Porcentual y Fraccionaria.',
+      'Numérica, Alfabética, Binaria y Compleja.',
+      'Nominal, Ordinal, Intervalo y Razón (Ratio).'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'Nominal (sólo igualdad), Ordinal (orden), Intervalo (restas, el 0 es real), Razón/Ratio (división, el 0 es ausencia absoluta).',
     trap: false
   },
@@ -1061,13 +1072,27 @@ const QUESTIONS = [
     trap: true
   },
   {
-    isEnumeration: true,
     category: 'medicion',
     type: 'vf',
     question: 'La "Ficha de Indicador" (como el modelo de INCIBE) es un concepto que define una plantilla para documentar rigurosamente cómo se recoge, calcula y analiza una métrica.',
     options: ['Verdadero', 'Falso'],
     correct: 0,
     justification: 'VERDADERO. Define campos como objetivo, fórmula, escala, frecuencia y responsables. No hace falta memorizar los 20 campos, pero sí saber qué es.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'medicion',
+    type: 'multi',
+    question: '¿Cómo se define una "Métrica" en Ingeniería del Software?',
+    options: [
+      'Una estimación del coste futuro de desarrollo de una aplicación web.',
+      'Un diagrama cualitativo de la estructura del software.',
+      'Una medida cuantitativa del grado en que un sistema, componente o proceso posee un atributo dado.',
+      'El peso en bytes del código fuente compilado exclusivamente.'
+    ],
+    correct: 2,
+    justification: 'Una métrica en IS es una medida siempre CUANTITATIVA que permite evaluar un atributo específico (esfuerzo, complejidad, densidad de defectos, etc.).',
     trap: false
   },
 ];

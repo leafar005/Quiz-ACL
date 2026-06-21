@@ -214,6 +214,9 @@
     if (q.isEnumeration) {
       typeLabel += ' 📋 Enumeración';
     }
+    if (q.isDefinition) {
+      typeLabel += ' 📖 Definición';
+    }
     typeEl.textContent = typeLabel;
 
     // Question text

@@ -3,7 +3,22 @@ const CATEGORIES = [
   { id: 'mapas',          name: 'Mapas de Proceso (IDEF0)',     icon: '🗺️' },
   { id: 'ciclo-pruebas',  name: 'Ciclo Operativo y Pruebas',     icon: '♻️' },
   { id: 'colaterales',    name: 'Procesos Colaterales (Compras, Formación, Cliente)', icon: '🤝' },
-  { id: 'conceptos',      name: 'Conceptos Generales SGCS',      icon: '🧠' }
+  { id: 'conceptos',      name: 'Conceptos Generales SGCS',      icon: '🧠' },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'multi',
+    question: '¿Cuál es la definición formal de "Proyecto" en ingeniería?',
+    options: [
+      'Proceso de negocio que nunca tiene una fecha de finalización definida.',
+      'Esfuerzo temporal, discreto, no rutinario y complejo llevado a cabo para crear un producto, servicio o resultado único.',
+      'Actividad orientada a la reducción de costes de un producto existente.',
+      'Conjunto de tareas repetitivas que realiza una organización de manera continua.'
+    ],
+    correct: 1,
+    justification: 'Un proyecto tiene tres características fundamentales: es discreto (temporal, con inicio y fin), no rutinario (es único) y complejo.',
+    trap: false
+  },
 ];
 
 const QUESTIONS = [
@@ -31,12 +46,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué es una desviación concertada y dónde se documenta?',
     options: [
-      'Es un error de programación documentado en el SIE.',
       'Es un cambio en la normativa ISO documentado en el Manual de Procedimientos.',
       'Es una no conformidad del cliente documentada en el Manual de Calidad.',
-      'Es un cambio autorizado sobre los procedimientos estándar del SGC para un proyecto en particular, y se documenta en el Plan de Calidad (o Plan de Realización) de ese proyecto.'
+      'Es un cambio autorizado sobre los procedimientos estándar del SGC para un proyecto en particular, y se documenta en el Plan de Calidad (o Plan de Realización) de ese proyecto.',
+      'Es un error de programación documentado en el SIE.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Las desviaciones concertadas son excepciones autorizadas al SGC (por ejemplo, usar herramientas impuestas por el cliente) y deben constar en el Plan de Calidad del proyecto.',
     trap: false
   },
@@ -54,12 +69,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En Gestión de Proyectos, ¿cuál es el ÚNICO entregable de gestión que tiene un control estricto de VERSIONES a lo largo del proyecto?',
     options: [
-      'El Plan de Proyecto.',
       'Las Actas de Reunión.',
-      'El Informe de Seguimiento.',
-      'El Informe de Cierre.'
+      'El Plan de Proyecto.',
+      'El Informe de Cierre.',
+      'El Informe de Seguimiento.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El Plan de Proyecto es la línea base que se va actualizando mediante versiones cuando hay replanificaciones. Los informes de seguimiento o actas no tienen "versiones" de sí mismos, son reportes puntuales (únicos).',
     trap: false
   },
@@ -71,11 +86,11 @@ const QUESTIONS = [
     question: 'En un mapa de procesos orientado según la norma IDEF0 (usado en SGCS), ¿qué representan las entradas, salidas, controles y mecanismos (perfil)?',
     options: [
       'Arriba = entradas. Abajo = salidas. Izquierda = proceso. Derecha = responsable.',
-      'Izquierda = entradas. Derecha = salidas. Arriba = controles/estándares. Abajo = mecanismos/perfil responsable.',
       'No hay una estructura fija, siempre que se ponga texto explicativo está bien.',
+      'Izquierda = entradas. Derecha = salidas. Arriba = controles/estándares. Abajo = mecanismos/perfil responsable.',
       'Caja central = entrada. Izquierda = proceso. Derecha = salidas. Abajo = controles.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'El esquema clásico: ENTRADAS por la izquierda, SALIDAS por la derecha, CONTROLES (políticas, directrices) por arriba y MECANISMOS (perfil responsable, herramientas, checklists) por abajo.',
     trap: false
   },
@@ -113,12 +128,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En el ciclo operativo de desarrollo, ¿cuáles son los 3 niveles de flexibilidad que se pueden contemplar para adaptarse al proyecto?',
     options: [
-      'Verificación, Validación y Auditoría.',
-      'Por fase, por salida/entregable, y por revisión formal obligatoria u opcional.',
+      'Nivel de madurez, nivel de capacidad y nivel de optimización.',
       'Por presupuesto, por plazos, y por tamaño de equipo.',
-      'Nivel de madurez, nivel de capacidad y nivel de optimización.'
+      'Verificación, Validación y Auditoría.',
+      'Por fase, por salida/entregable, y por revisión formal obligatoria u opcional.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'El SGCS prevé flexibilidad: 1) Por fase (puede omitirse una fase entera si no aplica), 2) Por salida (un entregable puede ser opcional dentro de una fase), 3) Por revisión (un entregable puede no requerir revisión formal).',
     trap: false
   },
@@ -127,12 +142,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué justificación económica/práctica se le da a un auditor para NO registrar los errores de pruebas unitarias y de integración en el SIE de una PYME?',
     options: [
-      'La relación coste/beneficio es mala; cuesta más el esfuerzo de documentarlos formalmente que el beneficio obtenido de analizarlos a tan bajo nivel.',
       'El cliente no quiere ver esos errores.',
       'Los programadores se negarían a hacerlo por privacidad.',
-      'La norma prohíbe documentar errores antes de la fase de sistema.'
+      'La norma prohíbe documentar errores antes de la fase de sistema.',
+      'La relación coste/beneficio es mala; cuesta más el esfuerzo de documentarlos formalmente que el beneficio obtenido de analizarlos a tan bajo nivel.'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'Para una PYME, documentar cada punto y coma fallido o cada error de tipado (unitarias) en un SIE formal genera una burocracia inasumible. El auditor acepta esto si se justifica por mala relación coste/beneficio.',
     trap: false
   },
@@ -141,12 +156,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las únicas pruebas obligatorias explícitamente por ISO 9001 y por qué?',
     options: [
-      'Las pruebas de aceptación, porque corresponden al principio de que el cliente es el rey.',
-      'Las pruebas unitarias, porque son la base de la calidad técnica.',
       'Las pruebas de sistema, porque establecen la línea base del producto.',
-      'Las pruebas de integración, porque verifican la arquitectura del software.'
+      'Las pruebas de aceptación, porque corresponden al principio de que el cliente es el rey.',
+      'Las pruebas de integración, porque verifican la arquitectura del software.',
+      'Las pruebas unitarias, porque son la base de la calidad técnica.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'Las de aceptación son las únicas obligatorias porque corresponden al primer principio de la calidad ("el cliente es el rey"). El resto se hacen por sentido común técnico (coste/beneficio).',
     trap: false
   },
@@ -155,10 +170,10 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿En qué momento se establece habitualmente la línea base de producto?',
     options: [
-      'Al firmar el contrato inicial con el cliente.',
       'Al finalizar las pruebas unitarias y de integración.',
+      'En la fase de diseño de bajo nivel.',
       'Al pasar satisfactoriamente las pruebas de sistema.',
-      'En la fase de diseño de bajo nivel.'
+      'Al firmar el contrato inicial con el cliente.'
     ],
     correct: 2,
     justification: 'Se establece al pasar satisfactoriamente las pruebas de sistema. A partir de este momento, cualquier cambio requiere la involucración del cliente y el jefe de proyecto.',
@@ -189,12 +204,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En el procedimiento de Compras (apartado 7.4), ¿qué tipo de criterios es obligatorio definir para la Base de Datos de Proveedores?',
     options: [
+      'No hay criterios obligatorios si el proveedor es muy conocido (ej. Microsoft).',
       'Criterios de auditoría, certificación ISO y proximidad geográfica.',
-      'Criterios de entrada, de mantenimiento y de salida.',
       'Criterios económicos, técnicos y comerciales.',
-      'No hay criterios obligatorios si el proveedor es muy conocido (ej. Microsoft).'
+      'Criterios de entrada, de mantenimiento y de salida.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'La norma exige mantener evaluados a los proveedores. Hay que tener 3 criterios definidos: de entrada (cómo ser admitido), de mantenimiento (cómo se revisa en cada pedido) y de salida (qué penalización causa expulsión).',
     trap: false
   },
@@ -214,12 +229,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué 3 características de gestión definen formalmente a un "Proyecto"?',
     options: [
-      'Es discreto (inicio y fin), no rutinario y complejo.',
       'Tiene un plazo, un coste y un esfuerzo determinados.',
       'Requiere un equipo de personas, un presupuesto y objetivos medibles.',
+      'Es discreto (inicio y fin), no rutinario y complejo.',
       'Se basa en tecnología, es innovador y satisface al cliente.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Atención a esta trampa: tiempo/coste/esfuerzo son atributos, no características. Las 3 características de un proyecto son: discreto (con inicio/fin claro), no rutinario (no es operación de cadena de montaje) y complejo.',
     trap: true
   },
@@ -248,12 +263,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En el ciclo en V, ¿cuándo se preparan los planes de pruebas?',
     options: [
-      'Al hacer diseño Alto Nivel se preparan las de integración; al hacer diseño Bajo Nivel se preparan las unitarias.',
-      'Al finalizar la programación se preparan todas las pruebas juntas.',
       'Al hacer diseño Alto Nivel se preparan las unitarias; al hacer diseño Bajo Nivel se preparan las de integración.',
-      'En la fase de requisitos se preparan todos los planes de prueba.'
+      'Al hacer diseño Alto Nivel se preparan las de integración; al hacer diseño Bajo Nivel se preparan las unitarias.',
+      'En la fase de requisitos se preparan todos los planes de prueba.',
+      'Al finalizar la programación se preparan todas las pruebas juntas.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'En V: Diseño Alto Nivel (arquitectura) -> Pruebas de Integración. Diseño Bajo Nivel (módulos) -> Pruebas Unitarias. "El mejor momento para pensar cómo probar algo es cuando lo acabas de hacer".',
     trap: false
   },
@@ -271,10 +286,10 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En el procedimiento de Control de Documentación del SGC, ¿qué soporte tecnológico aconseja el profesor por ser barato y cumplir la norma?',
     options: [
-      'Imprimir todo y guardarlo bajo llave en la oficina del Responsable de Calidad.',
       'Una herramienta comercial certificada tipo ISO Tools o KM Tools.',
+      'Subir los documentos a un repositorio público en GitHub.',
       'PC reciclado + carpetas + permisos (Responsable de Calidad único con escritura) + carpeta histórico offline.',
-      'Subir los documentos a un repositorio público en GitHub.'
+      'Imprimir todo y guardarlo bajo llave en la oficina del Responsable de Calidad.'
     ],
     correct: 2,
     justification: 'El profesor propone: PC reciclado + sistema de carpetas + permisos (solo Responsable de Calidad escribe en /Calidad/) + histórico offline. Garantiza 24/7, acceso de solo lectura y control de obsoletos.',
@@ -285,10 +300,10 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En la Gestión de Configuración de Software (GCS), ¿cuántas y cuáles son las líneas base habituales según el profesor?',
     options: [
-      '4: Requisitos, Diseño, Código y Pruebas.',
+      'Sólo 1: Línea base de código fuente.',
       'Sólo 2: Línea base de requisitos y Línea base de producto.',
-      '3: Línea base de diseño, de programación y de pruebas.',
-      'Sólo 1: Línea base de código fuente.'
+      '4: Requisitos, Diseño, Código y Pruebas.',
+      '3: Línea base de diseño, de programación y de pruebas.'
     ],
     correct: 1,
     justification: 'NO INVENTAR. El profesor martillea que sólo hay 2: Línea base de requisitos (el cliente la modifica) y Línea base de producto (se establece al pasar pruebas de sistema; requiere cliente + JP para cambios).',
@@ -392,7 +407,6 @@ const QUESTIONS = [
     trap: true
   },
   {
-    isEnumeration: true,
     category: 'ciclo-pruebas',
     type: 'vf',
     question: 'La línea base de producto se establece cuando se pasan satisfactoriamente las pruebas de unidad e integración.',
@@ -410,12 +424,27 @@ const QUESTIONS = [
     question: '¿Cuál es el orden secuencial correcto de las partes (fases) de un proyecto clásico en el ciclo de vida en V?',
     options: [
       'Contrato, Oferta, Requisitos, Diseño BN, Diseño AN, Programación, Pruebas Unitarias, Integración, Sistema, Aceptación, Cierre',
-      'Oferta, Contrato, Requisitos, Diseño AN, Diseño BN, Programación, Pruebas unitarias, Pruebas integración, Pruebas sistema, Pruebas aceptación, Despliegue / Cierre',
       'Oferta, Requisitos, Contrato, Diseño AN, Programación, Diseño BN, Pruebas Unitarias, Integración, Sistema, Aceptación, Cierre',
+      'Oferta, Contrato, Requisitos, Diseño AN, Diseño BN, Programación, Pruebas unitarias, Pruebas integración, Pruebas sistema, Pruebas aceptación, Despliegue / Cierre',
       'Requisitos, Oferta, Contrato, Programación, Diseño AN, Diseño BN, Pruebas Unitarias, Integración, Sistema, Aceptación, Cierre'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'La secuencia lógica comienza con la Oferta y el Contrato, seguidos del desglose en V: Requisitos, Diseño AN, Diseño BN, Programación, y la subida con Pruebas Unitarias, Integración, Sistema, Aceptación y Cierre.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'multi',
+    question: '¿Cuál es la definición formal de "Proyecto" en ingeniería?',
+    options: [
+      'Proceso de negocio que nunca tiene una fecha de finalización definida.',
+      'Esfuerzo temporal, discreto, no rutinario y complejo llevado a cabo para crear un producto, servicio o resultado único.',
+      'Actividad orientada a la reducción de costes de un producto existente.',
+      'Conjunto de tareas repetitivas que realiza una organización de manera continua.'
+    ],
+    correct: 1,
+    justification: 'Un proyecto tiene tres características fundamentales: es discreto (temporal, con inicio y fin), no rutinario (es único) y complejo.',
     trap: false
   },
 ];

@@ -414,6 +414,7 @@
             let typeLabel = q.type === 'multi' ? 'Múltiple' : 'V/F';
             if (q.trap) typeLabel += ' ⚠️ Trampa';
             if (q.isEnumeration) typeLabel += ' 📋 Enumeración';
+            if (q.isDefinition) typeLabel += ' 📖 Definición';
             const typeClass = q.type === 'multi' ? 'badge-multi' : 'badge-vf';
             
             let optionsHtml = '';
