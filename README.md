@@ -1,7 +1,20 @@
-# Portal de Encuestas ACL 2026
+# Portal de Encuestas ACL - Port a Electron ⚡
 
-Portal interactivo diseñado para facilitar el estudio y la preparación de la asignatura **ACL** (Aseguramiento de la Calidad del Software). Permite acceder a múltiples cuestionarios interactivos organizados por temáticas y realizar simulacros. Quería hacer cualquier tontería para estudiar mejor la recu y se me fue de las manos.
+**Estás en la rama `port-a-Electron`.** 
+Esta rama contiene la configuración necesaria para envolver la aplicación web original de ACL en una **aplicación nativa de escritorio** utilizando [Electron](https://www.electronjs.org/).
 
+### ¿Qué aporta esta rama?
+Además del código web de siempre, aquí encontrarás:
+- `package.json`: Scripts de compilación y dependencias de Electron.
+- `main.js`: El script de arranque que crea la ventana nativa del sistema.
+- `run-quiz.sh`: Un lanzador útil para sistemas Linux modernos (ej. Ubuntu 22.04+) para evitar problemas con la librería `libfuse2` al abrir el `.AppImage`.
+
+### ¿Cómo probarlo localmente?
+1. `npm install`
+2. `npm start` (para abrir la ventana de testeo)
+3. `npm run build` (para generar el archivo instalable `.AppImage` para Linux)
+
+---
 ## 📚 Módulos Disponibles
 
 El portal cuenta con cuestionarios específicos para los siguientes temas:
