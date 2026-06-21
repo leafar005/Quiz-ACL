@@ -32,8 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     cards = [{q: "Cargando flashcards o no hay disponibles para este tema...", a: ""}];
   }
   
-  // Shuffle cards
-  cards = cards.sort(() => Math.random() - 0.5);
+  // Shuffle cards only if it's the global flashcards view
+  if (!topic) {
+    cards = cards.sort(() => Math.random() - 0.5);
+  }
   
   let currentIndex = 0;
   
