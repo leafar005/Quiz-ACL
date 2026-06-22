@@ -12,8 +12,17 @@ El portal cuenta con cuestionarios específicos para los siguientes temas:
 - ⚙️ **SGCS Práctica**: Procedimientos operativos, Mapas de Proceso (IDEF0), procesos colaterales, ciclo de pruebas y el Sistema de Información para Ejecutivos (SIE).
 - 📋 **Auditorías Internas (PAI)**: Cuestionario dedicado al Plan de Auditorías Internas, cubriendo Verificaciones de Fase, Auditorías Generales y gestión de No Conformidades.
 - 🌍 **Encuesta Global**: Un simulacro general configurable (10, 20, 50 o 100 preguntas) que extrae preguntas de forma aleatoria de todos los módulos anteriores, ideal para la preparación final.
+- 📖 **Apuntes / Guía Definitiva**: Un resumen interactivo de alto rendimiento con toda la teoría necesaria para el examen (ISO 9001, CMMI, SCAMPI, ITmark, Métricas, Auditorías, etc.) ajustado estrictamente al temario oficial.
 
-## 🚀 Nuevas Características (v2.4.0 - Flashcards Premium)
+## 🚀 Nuevas Características (v2.5.0 - La Guía Definitiva)
+
+Esta última actualización cierra el círculo del estudio incorporando la base teórica definitiva:
+
+- 📖 **Apuntes Interactivos**: Un resumen global ("cheat sheet" expandida) diseñado para memorizar rápidamente, estructurar conceptos y evitar las clásicas "preguntas trampa" de los test.
+- 🎯 **Ajuste estricto al temario**: Contenido depurado y adaptado milimétricamente a las exigencias del profesor (novedades reales de ISO 2015, mapeo exacto de PAs en el ciclo de vida, Cuadro de Mando, Ficha de Indicador, etc.).
+- 🧭 **Navegación fluida**: Índice lateral dinámico que rastrea tu lectura en tiempo real y te permite saltar a los conceptos clave (QA vs QC, Auditorías, Modelos Secundarios) al instante.
+
+## 📦 Características Previas (v2.4.0 - Flashcards Premium)
 
 Esta actualización incorpora un motor de memorización basado en **Flashcards dinámicas** con formato inteligente:
 
