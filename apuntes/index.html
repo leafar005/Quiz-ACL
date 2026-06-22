@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen Global - ACL 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/shared.css">
+  <style>
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #111827;
+      --bg-card: #1a1f35;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --c-iso: #3b82f6;
+      --c-cmmi: #8b5cf6;
+      --c-otros: #f59e0b;
+      --c-sgcs: #10b981;
+      --c-pai: #ef4444;
+    }
+    
+    body { margin: 0; padding: 0; display: flex; height: 100vh; overflow: hidden; font-family: 'Inter', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); }
+    #sidebar { width: 320px; min-width: 320px; background: rgba(17, 24, 39, 0.95); border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; z-index: 50; }
+    .sidebar-header { padding: 24px; border-bottom: 1px solid var(--border-subtle); background: var(--bg-secondary); }
+    .back-btn { display: flex; align-items: center; gap: 10px; color: var(--text-primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; background: var(--bg-card); padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border-subtle); transition: all 0.2s; }
+    .back-btn:hover { background: var(--accent); border-color: var(--accent); }
+    .sidebar-content { flex: 1; overflow-y: auto; padding: 20px 0; }
+    .nav-h2 { display: block; padding: 12px 24px 4px 24px; font-size: 0.85rem; font-weight: 800; color: #a5b4fc; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; }
+    .nav-h3 { display: block; padding: 8px 24px 8px 36px; font-size: 0.8rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; border-left: 3px solid transparent; }
+    .nav-h3:hover { color: var(--text-primary); background: rgba(255,255,255,0.03); }
+    .nav-h3.active { color: #fff; background: rgba(99, 102, 241, 0.15); border-left-color: var(--accent); font-weight: 600; }
+    #main-content { flex: 1; overflow-y: auto; padding: 60px; scroll-behavior: smooth; }
+    .content-container { max-width: 900px; margin: 0 auto; }
+    .page-title { font-size: 3.2rem; font-weight: 900; margin-bottom: 15px; background: linear-gradient(135deg, #fff 0%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
+    .page-subtitle { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 60px; line-height: 1.6; }
+    h2.theme-title { font-size: 2.2rem; font-weight: 800; margin: 80px 0 30px 0; padding-bottom: 15px; border-bottom: 2px solid rgba(255,255,255,0.1); color: #fff; }
+    h3.subtheme-title { font-size: 1.4rem; font-weight: 700; margin: 45px 0 15px 0; color: #c7d2fe; }
+    h4 { font-size: 1.15rem; font-weight: 600; margin: 25px 0 10px 0; color: #a5b4fc; }
+    p { line-height: 1.8; color: #d1d5db; margin-bottom: 20px; font-size: 1.05rem; }
+    ul, ol { color: #d1d5db; line-height: 1.8; margin-bottom: 24px; padding-left: 24px; font-size: 1.05rem; }
+    li { margin-bottom: 10px; }
+    strong { color: #fff; font-weight: 600; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 30px 0; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .box { background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid var(--border-subtle); }
+    .box h4 { margin-top: 0; color: #fff; margin-bottom: 15px; }
+    .alert { background: rgba(99, 102, 241, 0.1); border-left: 4px solid var(--accent); padding: 20px; margin: 30px 0; border-radius: 0 12px 12px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 30px 0; background: rgba(255,255,255,0.02); border-radius: 12px; overflow: hidden; }
+    th, td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border-subtle); line-height: 1.6; }
+    th { background: rgba(255,255,255,0.05); font-weight: 700; color: #fff; }
+    .tag { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; }
+    
+    @media (max-width: 850px) {
+      body { flex-direction: column; height: auto; overflow-y: auto; }
+      #sidebar { width: 100%; min-width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border-subtle); position: sticky; top: 0; z-index: 100; max-height: 250px; }
+      .sidebar-content { max-height: 180px; padding: 10px 0; }
+      #main-content { overflow-y: visible; padding: 25px 15px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 15px; }
+      .page-title { font-size: 2rem; }
+      .page-subtitle { font-size: 1rem; margin-bottom: 30px; }
+      h2.theme-title { font-size: 1.8rem; margin: 40px 0 20px 0; }
+      h3.subtheme-title { font-size: 1.3rem; margin-top: 30px; }
+      .box { padding: 16px; }
+      .nav-h2 { padding-top: 8px; padding-bottom: 8px; }
+      .nav-h3 { padding-top: 6px; padding-bottom: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <a href="../index.html" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Volver al Portal
+      </a>
+    </div>
+    <div class="sidebar-content" id="nav-links"></div>
+  </nav>
+
+  <main id="main-content">
+    <div class="content-container">
+      
+      <h1 class="page-title">Guía Definitiva de Calidad</h1>
+      <p class="page-subtitle">Resumen completo para Aseguramiento de la Calidad. Contiene todos los estándares, modelos y procedimientos.</p>
+
+      <!-- TEMA 1: Calidad e ISO 9000 -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-iso">1. Calidad e ISO 9000</h2>
+        
+        <h3 class="subtheme-title" id="st-definicion">Definición de Calidad y las 4 Ps</h3>
+        <p>A nivel técnico, la calidad no es una percepción subjetiva (como "fácil de usar"). Para poder gestionarse en ingeniería de software, la definición de calidad está sujeta a <strong>tres restricciones obligatorias</strong>:</p>
+        <ol>
+          <li>Debe establecerse <strong>por anticipado</strong>, antes del desarrollo.</li>
+          <li>Debe ser <strong>cuantificable</strong> (poder medirse con indicadores).</li>
+          <li>Debe ser <strong>verificable</strong> (existencia de un procedimiento objetivo que constate su cumplimiento).</li>
+        </ol>
+        <p>Para alcanzar esta calidad y salir de la histórica "Crisis del Software", la industria se apoya en el modelo de las <strong>4 Ps</strong>: <strong>Producto</strong> (el software), <strong>Proceso</strong> (pilar principal), <strong>Personas</strong> (talento) y <strong>Problema</strong> (conceptualización).</p>
+
+        <h3 class="subtheme-title" id="st-qa-qc">Aseguramiento vs Control de Calidad</h3>
+        <div class="grid-2">
+          <div class="box" style="border-top: 4px solid var(--c-iso);">
+            <span class="tag" style="background: rgba(59, 130, 246, 0.2); color: #93c5fd;">QA (Aseguramiento)</span>
+            <h4>Prevención en el Proceso</h4>
+            <p>Garantiza que el equipo sigue los procedimientos (<em>"¿Estamos haciendo las cosas como dijimos?"</em>). Ejecutado por roles independientes mediante <strong>Auditorías Internas</strong>.</p>
+          </div>
+          <div class="box" style="border-top: 4px solid var(--c-pai);">
+            <span class="tag" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5;">QC (Control)</span>
+            <h4>Detección en el Producto</h4>
+            <p>Asegura que el entregable cumple los requisitos técnicos (<em>"¿Lo que hemos hecho está bien?"</em>). Ejecutado por testers mediante <strong>Pruebas</strong>.</p>
+          </div>
+        </div>
+        <p>Dentro de QC distinguimos: <strong>Verificación</strong> ("¿Construimos el producto <em>correctamente</em>?") y <strong>Validación</strong> ("¿Construimos el producto <em>correcto</em>?").</p>
+
+        <h3 class="subtheme-title" id="st-entidades">Estructura Institucional e ISO</h3>
+        <p><strong>AENOR</strong> normaliza y certifica empresas, acreditada por <strong>ENAC</strong> (que no emite certificados a empresas). La <strong>ISO</strong> emite normativas globales (9000 para vocabulario, 9001 certificable, 90003 guía SW).</p>
+
+        <h3 class="subtheme-title" id="st-iso-9001">Estructura Completa de ISO 9001</h3>
+        <ul>
+          <li><strong>Apartado 4. Sistema de gestión de la calidad:</strong> Identificación de procesos y documentación mínima obligatoria.</li>
+          <li><strong>Apartado 5. Responsabilidad de la dirección:</strong> Liderazgo y enfoque al cliente.</li>
+          <li><strong>Apartado 6. Gestión de los recursos:</strong> Personal formado e infraestructuras.</li>
+          <li><strong>Apartado 7. Realización del producto:</strong> ¡El <strong>único apartado que admite exclusiones</strong> justificadas!</li>
+          <li><strong>Apartado 8. Medición, análisis y mejora:</strong> Obliga a medir la satisfacción del cliente y realizar auditorías.</li>
+        </ul>
+      </section>
+
+      <!-- TEMA 2: CMMI -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-cmmi">2. El Modelo CMMI y SCAMPI</h2>
+
+        <h3 class="subtheme-title" id="st-cmmi-versiones">Evolución, Versiones y Estructura</h3>
+        <ul>
+          <li><strong>V1.3:</strong> 3 constelaciones (DEV, ACQ, SVC) y dos arquitecturas (Escalonada/Continua).</li>
+          <li><strong>V2.0 (ISACA):</strong> Desaparece formalmente el modelo Escalonado. Entran los Practice Groups (PG).</li>
+          <li><strong>V3.0 (Actual):</strong> Añade dominios transversales (DATA, DEV, PPL, SAF, SEC, SVC, SPM, VRT).</li>
+        </ul>
+
+        <h3 class="subtheme-title" id="st-cmmi-20pas">Catálogo de 20 Core PAs (V2.0)</h3>
+        <div class="grid-2 text-sm">
+          <div class="box">
+            <h4 style="font-size: 1rem; color: #93c5fd;">Gestión y Análisis</h4>
+            <ul style="margin: 0;"><li><strong>RDM:</strong> Requisitos.</li><li><strong>EST & PLAN:</strong> Estimación/Planificación.</li><li><strong>MC & RSK & SAM:</strong> Monitorización/Riesgos/Proveedores.</li></ul>
+          </div>
+          <div class="box">
+            <h4 style="font-size: 1rem; color: #a7f3d0;">Desarrollo y QA</h4>
+            <ul style="margin: 0;"><li><strong>TS & PI:</strong> Diseño/Integración.</li><li><strong>VV & PR:</strong> Pruebas/Revisiones.</li><li><strong>CM & PQA:</strong> Configuración/Calidad.</li></ul>
+          </div>
+          <div class="box" style="grid-column: span 2;">
+            <h4 style="font-size: 1rem; color: #ddd6fe;">Organización y Mejora</h4>
+            <ul style="margin: 0; display: grid; grid-template-columns: 1fr 1fr;">
+              <li><strong>PAD & PCM:</strong> Procesos.</li><li><strong>OT & MPM:</strong> Formación/Rendimiento.</li>
+              <li><strong>GOV & II:</strong> Gobierno/Infraestructura.</li><li><strong>DAR & CAR:</strong> Decisiones/Análisis Causal.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="subtheme-title" id="st-scampi">Auditoría SCAMPI: Fases y Reglas</h3>
+        <p>SCAMPI requiere <strong>Roles fijos:</strong> Sponsor, Lead Appraiser (LA), ATMs (equipo), y el OUC (coordinador organizativo). Se seleccionan proyectos objetivo (obligatorios) y de apoyo (opcionales).</p>
+        <p>Durante la fase <strong>On-Site</strong> (evaluación presencial), existe una regla estricta: <em>Está terminantemente prohibido crear documentación de nueva cuña</em>.</p>
+        <div class="alert" style="border-left-color: var(--c-cmmi);">
+          En el análisis Bottom-Up, las prácticas se califican en FI/LI/PI/NI. <strong>Un Practice Group (PG) solo se considera satisfecho si TODAS sus prácticas obtienen FI o LI.</strong>
+        </div>
+      </section>
+
+      <!-- TEMA 3: OTROS MODELOS Y MEDICIÓN -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-otros">3. Otros Modelos y Métricas</h2>
+
+        <h3 class="subtheme-title" id="st-modelos-secundarios">Ecosistema Alternativo</h3>
+        <ul>
+          <li><strong>SPICE (ISO/IEC 15504):</strong> Esquema AENOR exige 3 procesos en Nivel 1, 7 en Nivel 2, y 11 en Nivel 3.</li>
+          <li><strong>MMIS V.2:</strong> 5 niveles: Básico, Gestionado, Establecido, Predecible e Innovado.</li>
+          <li><strong>ITmark:</strong> Sello élite para PYMEs. Evalúa Negocio, Seguridad (ISO 27000) e Ingeniería.</li>
+        </ul>
+
+        <h3 class="subtheme-title" id="st-gqm">Medición: GQM, PSM y Ficha Indicador</h3>
+        <p>Toda métrica GQM (Goal-Question-Metric) requiere <strong>8 campos obligatorios</strong> en su Ficha de Indicador: Nombre, Objetivo, Fórmula, Unidad, Origen, Datos de entrada, Período, y Criterios. Todas las métricas confluyen en el Cuadro de Mando de Calidad (4 perspectivas: Financiera, Cliente, Procesos, Aprendizaje).</p>
+      </section>
+
+      <!-- TEMA 4: SGCS Y PRÁCTICA -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-sgcs">4. SGCS y Práctica Operativa</h2>
+
+        <h3 class="subtheme-title" id="st-jerarquia">Jerarquía Documental del SGC</h3>
+        <p>Todo el conocimiento corporativo obedece a una rigurosa jerarquía documental. El estrato superior es el <strong>Manual de Calidad</strong>, siendo el único documento de naturaleza <strong>pública</strong> de la pirámide. El resto de la cascada desciende al terreno operativo y <strong>privado</strong>:</p>
+        <div class="box" style="margin-bottom: 20px;">
+          <ol style="margin:0; font-family: monospace; font-size: 0.95rem; line-height: 2;">
+            <li><strong style="color: #6366f1;">Manual de Calidad</strong> (Público, contiene el mapa de procesos)</li>
+            <li>&nbsp;&nbsp;↳ <strong style="color: #cbd5e1;">Plan de Calidad</strong> (Particular de cada proyecto)</li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong style="color: #94a3b8;">Manual de Procedimientos</strong> (Privado, el compendio de procesos)</li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong style="color: #64748b;">Plantillas</strong></li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong style="color: #475569;">Guías</strong></li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong style="color: #334155;">Registros de Calidad</strong> (Evidencias inmutables de ejecución)</li>
+          </ol>
+        </div>
+
+        <h3 class="subtheme-title" id="st-proyecto">El Proyecto y su Ciclo Operativo</h3>
+        <p>Se considera <strong>Proyecto</strong> a una iniciativa discreta (temporal), no rutinaria y de alta complejidad (nota: el coste o tiempo son atributos, no características definitorias). El documento que lo articula es el <em>Plan de Proyecto</em>.</p>
+        <p>El ciclo operativo de desarrollo presenta <strong>3 niveles de flexibilidad</strong> (por fase, por salida y por revisión). Además, al operar bajo un modelo en "V", el esfuerzo de pruebas se prevé durante el propio diseño:</p>
+        <ul>
+          <li>El <em>Diseño de Alto Nivel (Arquitectura)</em> prepara los planes de Pruebas de <strong>Integración</strong>.</li>
+          <li>El <em>Diseño de Bajo Nivel</em> prepara los planes de Pruebas <strong>Unitarias</strong>.</li>
+          <li>El <em>Prototipado</em> se asume como técnica de contención que pertenece, de forma estricta, a la fase de <strong>Requisitos</strong>.</li>
+        </ul>
+
+        <h3 class="subtheme-title" id="st-configuracion">Gestión de la Configuración y Trazabilidad</h3>
+        <ul>
+          <li><strong>Elemento de Configuración Software (ECS):</strong> Artefactos controlados individualmente.</li>
+          <li><strong>Línea Base (Baseline):</strong> Sólo existen oficialmente dos: la de <em>Requisitos</em>, y la de <em>Producto</em> (que se establece obligatoriamente al finalizar con éxito las pruebas de Sistema).</li>
+          <li><strong>RTF (Revisiones Técnicas Formales):</strong> Revisiones tempranas ejecutadas por pares.</li>
+        </ul>
+      </section>
+
+      <!-- TEMA 5: AUDITORÍAS -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-auditorias">5. Auditorías Internas y Evaluaciones</h2>
+
+        <h3 class="subtheme-title" id="st-tipos-auditorias">Mecánica de la Auditoría: "Nunca por Sorpresa"</h3>
+        <p>Dado que la auditoría es puro <strong>Aseguramiento (QA)</strong> y exige una vasta inversión de tiempo en entrevistas y revisiones por parte del equipo, se fundamenta en un principio irrenunciable: <strong>Las auditorías nunca se realizan por sorpresa</strong>. El acuerdo de fechas con el auditado es obligatorio.</p>
+        
+        <p>Operativamente, el Sistema de Gestión de Calidad se audita en dos frentes simultáneos (VF y AG):</p>
+        <div class="grid-2">
+          <div class="box" style="border-top-color: #8b5cf6;">
+            <h4>Verificaciones de Fase (VF)</h4>
+            <p>Se aplican a <strong>proyectos en curso</strong> en hitos específicos. Son planificadas por el Jefe de Proyecto y exigen un auditor que sea puramente <em>técnico SW</em>.</p>
+          </div>
+          <div class="box" style="border-top-color: #ec4899;">
+            <h4>Auditorías Generales (AG)</h4>
+            <p>Se aplican a <strong>departamentos horizontales</strong> (Compras, RRHH). Son planificadas por el Responsable de Calidad y el auditor <em>no necesita ser técnico</em>.</p>
+          </div>
+        </div>
+
+        <p>Para no paralizar el proyecto, la normativa exige aplicar estratégicamente <strong>4 Verificaciones de Fase (VF) obligatorias</strong> en el ciclo de vida:</p>
+        <ol>
+          <li>Tras los <strong>Requisitos</strong> (asegurar el mandato del cliente).</li>
+          <li>Tras la <strong>Programación</strong> (antes de entrar a los entornos de pruebas formales).</li>
+          <li>Antes de las <strong>Pruebas de Aceptación</strong> (certificar el entregable final).</li>
+          <li>Al <strong>Cierre</strong> del Proyecto (historificar y devolver recursos).</li>
+        </ol>
+
+        <h3 class="subtheme-title" id="st-auditor">Las 5 Restricciones Inviolables del Auditor</h3>
+        <div class="alert" style="border-left-color: var(--c-pai);">
+          Para que una auditoría mantenga su validez legal y procesal, el perfil seleccionado debe cumplir de forma simultánea e inflexible <strong>5 características</strong>:
+          <br><br>1. <strong>Ajeno:</strong> Inmunidad jerárquica frente al departamento auditado.
+          <br>2. <strong>Conocimientos en auditar:</strong> Formación en técnicas de entrevista y muestreo.
+          <br>3. <strong>Experiencia en auditar:</strong> Horas previas auditando (ej. como "auditor en prácticas").
+          <br>4. <strong>Conocimientos en lo auditado:</strong> Teoría sobre el área (ej. conocer las normas de RRHH o Java).
+          <br>5. <strong>Experiencia en lo auditado:</strong> Background práctico demostrable en el área evaluada.
+        </div>
+
+        <h3 class="subtheme-title" id="st-nc-ac">Aclaración Estricta: Acciones Correctivas vs Preventivas</h3>
+        <p>Si la evaluación detecta desviaciones (No Conformidades), se ejecutan acciones para mitigarlas. <strong>Es vital comprender que son mecanismos disconexos: no se ligan secuencialmente.</strong></p>
+        <ul>
+          <li><strong>Acciones Correctivas:</strong> Su detonante es una No Conformidad que <em>ya ha ocurrido</em> (ej. detectada en la auditoría). Su objetivo es atacar la deficiencia ocurrida para solventar el daño.</li>
+          <li><strong>Acciones Preventivas:</strong> Su detonante es una <em>sugerencia u oportunidad de mejora</em>. Atacan la causa raíz de un riesgo <em>antes de que este logre materializarse</em> y crear una No Conformidad.</li>
+        </ul>
+      </section>
+
+      <div style="height: 120px;"></div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const navLinksContainer = document.getElementById("nav-links");
+      const headings = document.querySelectorAll("#main-content h2.theme-title, #main-content h3.subtheme-title");
+      
+      headings.forEach((heading) => {
+        const link = document.createElement("a");
+        link.href = "#" + heading.id;
+        if (heading.tagName.toLowerCase() === "h2") {
+          link.className = "nav-h2";
+          link.textContent = heading.textContent;
+        } else {
+          link.className = "nav-h3";
+          link.textContent = heading.textContent;
+        }
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = document.getElementById(heading.id);
+          const main = document.getElementById("main-content");
+          main.scrollTo({ top: target.offsetTop - 60, behavior: "smooth" });
+        });
+        navLinksContainer.appendChild(link);
+      });
+
+      const observerOptions = {
+        root: document.getElementById("main-content"),
+        rootMargin: "-10% 0px -75% 0px",
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const activeLink = document.querySelector(`.nav-h3[href="#${id}"], .nav-h2[href="#${id}"]`);
+            document.querySelectorAll(".nav-h3, .nav-h2").forEach(l => l.classList.remove("active"));
+            if (activeLink && activeLink.classList.contains("nav-h3")) {
+              activeLink.classList.add("active");
+            }
+          }
+        });
+      }, observerOptions);
+
+      headings.forEach(h => observer.observe(h));
+    });
+  </script>
+</body>
+</html>
