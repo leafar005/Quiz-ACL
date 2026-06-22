@@ -58,8 +58,11 @@
     
     @media (max-width: 850px) {
       body { flex-direction: column; height: auto; overflow-y: auto; }
-      #sidebar { width: 100%; min-width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border-subtle); position: sticky; top: 0; z-index: 100; max-height: 250px; }
-      .sidebar-content { max-height: 180px; padding: 10px 0; }
+      #sidebar { width: 100%; min-width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 100; }
+      .sidebar-content { display: flex; flex-direction: row; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 10px 15px; -webkit-overflow-scrolling: touch; align-items: center; max-height: none; }
+      .nav-h2 { display: inline-block; padding: 8px 15px; margin-right: 10px; font-size: 0.8rem; background: rgba(99,102,241,0.1); border-radius: 8px; }
+      .nav-h3 { display: inline-block; padding: 8px 12px; font-size: 0.85rem; border-left: none; }
+      .nav-h3.active { background: rgba(99,102,241,0.2); border-radius: 8px; color: #fff; font-weight: 600; }
       #main-content { overflow-y: visible; padding: 25px 15px; }
       .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 15px; }
       .page-title { font-size: 2rem; }
@@ -67,8 +70,6 @@
       h2.theme-title { font-size: 1.8rem; margin: 40px 0 20px 0; }
       h3.subtheme-title { font-size: 1.3rem; margin-top: 30px; }
       .box { padding: 16px; }
-      .nav-h2 { padding-top: 8px; padding-bottom: 8px; }
-      .nav-h3 { padding-top: 6px; padding-bottom: 6px; }
     }
   </style>
 </head>

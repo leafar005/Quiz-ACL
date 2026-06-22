@@ -120,6 +120,8 @@ body {
   transform: translateX(0) scale(0.8);
   pointer-events: none;
   z-index: 1;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .flashcard-container.card-active {
@@ -246,6 +248,8 @@ body {
   width: 100%;
   max-width: 700px;
   justify-content: space-between;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .flashcard-controls button {
@@ -257,6 +261,7 @@ body {
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 150px;
+  touch-action: manipulation;
 }
 
 .btn-secondary {
@@ -315,10 +320,10 @@ button:disabled {
     transform: translateX(15%) scale(0.85);
   }
   .flashcard-front, .flashcard-back {
-    padding: 25px 15px;
+    padding: 15px 15px 30px 15px;
   }
   .flashcard-content {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
   .flashcard-back .flashcard-content {
     font-size: 0.95rem;
