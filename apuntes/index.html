@@ -26,7 +26,8 @@
     }
     
     body { margin: 0; padding: 0; display: flex; height: 100vh; overflow: hidden; font-family: 'Inter', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); }
-    #sidebar { width: 320px; min-width: 320px; background: rgba(17, 24, 39, 0.95); border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; z-index: 50; }
+    #sidebar { width: 320px; min-width: 320px; background: rgba(17, 24, 39, 0.95); border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; z-index: 50; transition: width 0.3s ease, min-width 0.3s ease, opacity 0.3s ease; }
+    #sidebar.collapsed { width: 0 !important; min-width: 0 !important; border: none !important; opacity: 0; overflow: hidden; padding: 0; margin: 0; }
     .sidebar-header { padding: 24px; border-bottom: 1px solid var(--border-subtle); background: var(--bg-secondary); }
     .back-btn { display: flex; align-items: center; gap: 10px; color: var(--text-primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; background: var(--bg-card); padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border-subtle); transition: all 0.2s; }
     .back-btn:hover { background: var(--accent); border-color: var(--accent); }
@@ -35,7 +36,14 @@
     .nav-h3 { display: block; padding: 8px 24px 8px 36px; font-size: 0.8rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; border-left: 3px solid transparent; }
     .nav-h3:hover { color: var(--text-primary); background: rgba(255,255,255,0.03); }
     .nav-h3.active { color: #fff; background: rgba(99, 102, 241, 0.15); border-left-color: var(--accent); font-weight: 600; }
-    #main-content { flex: 1; overflow-y: auto; padding: 60px; scroll-behavior: smooth; }
+    #main-content { flex: 1; overflow-y: auto; padding: 20px 60px 60px 60px; scroll-behavior: smooth; position: relative; }
+    .toggle-btn {
+      position: sticky; top: 0px; z-index: 99; margin-bottom: 20px;
+      background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-primary);
+      padding: 10px 15px; border-radius: 8px; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; font-weight: 600; font-size: 0.9rem;
+    }
+    .toggle-btn:hover { background: var(--accent); border-color: var(--accent); }
     .content-container { max-width: 900px; margin: 0 auto; }
     .page-title { font-size: 3.2rem; font-weight: 900; margin-bottom: 15px; background: linear-gradient(135deg, #fff 0%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
     .page-subtitle { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 60px; line-height: 1.6; }
@@ -86,190 +94,464 @@
   </nav>
 
   <main id="main-content">
+    
+    <button id="toggle-sidebar" class="toggle-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      Mostrar / Ocultar Índice
+    </button>
+    
     <div class="content-container">
       
-      <h1 class="page-title">Guía Definitiva de Calidad</h1>
-      <p class="page-subtitle">Resumen completo para Aseguramiento de la Calidad. Contiene todos los estándares, modelos y procedimientos.</p>
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h1 class="page-title">Guía Definitiva de Calidad</h1>
+        <p class="page-subtitle" style="max-width: 600px; margin: 0 auto;">Resumen de alto rendimiento para dominar Aseguramiento de la Calidad. Diseñado para memorizar, estructurar y evitar trampas.</p>
+      </div>
 
       <!-- TEMA 1: Calidad e ISO 9000 -->
       <section class="theme-section">
-        <h2 class="theme-title" id="t-iso">1. Calidad e ISO 9000</h2>
+        <h2 class="theme-title" id="t-01" style="border-bottom-color: var(--c-iso); color: var(--c-iso);">1. Calidad del Software, QA vs QC y V&V</h2>
         
-        <h3 class="subtheme-title" id="st-definicion">Definición de Calidad y las 4 Ps</h3>
-        <p>A nivel técnico, la calidad no es una percepción subjetiva (como "fácil de usar"). Para poder gestionarse en ingeniería de software, la definición de calidad está sujeta a <strong>tres restricciones obligatorias</strong>:</p>
-        <ol>
-          <li>Debe establecerse <strong>por anticipado</strong>, antes del desarrollo.</li>
-          <li>Debe ser <strong>cuantificable</strong> (poder medirse con indicadores).</li>
-          <li>Debe ser <strong>verificable</strong> (existencia de un procedimiento objetivo que constate su cumplimiento).</li>
-        </ol>
-        <p>Para alcanzar esta calidad y salir de la histórica "Crisis del Software", la industria se apoya en el modelo de las <strong>4 Ps</strong>: <strong>Producto</strong> (el software), <strong>Proceso</strong> (pilar principal), <strong>Personas</strong> (talento) y <strong>Problema</strong> (conceptualización).</p>
-
-        <h3 class="subtheme-title" id="st-qa-qc">Aseguramiento vs Control de Calidad</h3>
-        <div class="grid-2">
-          <div class="box" style="border-top: 4px solid var(--c-iso);">
-            <span class="tag" style="background: rgba(59, 130, 246, 0.2); color: #93c5fd;">QA (Aseguramiento)</span>
-            <h4>Prevención en el Proceso</h4>
-            <p>Garantiza que el equipo sigue los procedimientos (<em>"¿Estamos haciendo las cosas como dijimos?"</em>). Ejecutado por roles independientes mediante <strong>Auditorías Internas</strong>.</p>
+        <h3 class="subtheme-title" id="st-1-1">1. Definiciones Canónicas de Calidad</h3>
+        <div class="grid-3">
+          <div class="box" style="border-top: 3px solid #3b82f6;">
+            <div style="font-size: 2rem; margin-bottom: 10px;">📏</div>
+            <h4 style="color: #60a5fa; margin-bottom: 5px;">ISO 9000:2015</h4>
+            <p style="font-size: 0.95rem;">"El <strong>grado</strong> en el que un conjunto de <strong>características inherentes</strong> de un objeto cumple con los <strong>requisitos</strong>."</p>
           </div>
-          <div class="box" style="border-top: 4px solid var(--c-pai);">
-            <span class="tag" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5;">QC (Control)</span>
-            <h4>Detección en el Producto</h4>
-            <p>Asegura que el entregable cumple los requisitos técnicos (<em>"¿Lo que hemos hecho está bien?"</em>). Ejecutado por testers mediante <strong>Pruebas</strong>.</p>
+          <div class="box" style="border-top: 3px solid #8b5cf6;">
+            <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
+            <h4 style="color: #a78bfa; margin-bottom: 5px;">ISO 8402</h4>
+            <p style="font-size: 0.95rem;">"Propiedades y características que le confieren aptitud para satisfacer <strong>necesidades explícitas o implícitas</strong>."</p>
+          </div>
+          <div class="box" style="border-top: 3px solid #f59e0b;">
+            <div style="font-size: 2rem; margin-bottom: 10px;">🤔</div>
+            <h4 style="color: #fbbf24; margin-bottom: 5px;">Crosby</h4>
+            <p style="font-size: 0.95rem;">Apunta a la ambigüedad humana: <em>"La gente cree saber qué es la calidad"</em>.</p>
           </div>
         </div>
-        <p>Dentro de QC distinguimos: <strong>Verificación</strong> ("¿Construimos el producto <em>correctamente</em>?") y <strong>Validación</strong> ("¿Construimos el producto <em>correcto</em>?").</p>
 
-        <h3 class="subtheme-title" id="st-entidades">Estructura Institucional e ISO</h3>
-        <p><strong>AENOR</strong> normaliza y certifica empresas, acreditada por <strong>ENAC</strong> (que no emite certificados a empresas). La <strong>ISO</strong> emite normativas globales (9000 para vocabulario, 9001 certificable, 90003 guía SW).</p>
+        <p>Toda definición técnica en esta asignatura está sujeta a <strong>3 restricciones obligatorias</strong>:</p>
+        <div class="grid-3" style="gap: 15px;">
+          <div class="box" style="padding: 15px; text-align: center; background: rgba(255,255,255,0.02);">
+            <span class="tag" style="background: rgba(255,255,255,0.1);">1</span> <strong>Por anticipado</strong> (antes de empezar)
+          </div>
+          <div class="box" style="padding: 15px; text-align: center; background: rgba(255,255,255,0.02);">
+            <span class="tag" style="background: rgba(255,255,255,0.1);">2</span> <strong>Cuantificables</strong> (números objetivos)
+          </div>
+          <div class="box" style="padding: 15px; text-align: center; background: rgba(255,255,255,0.02);">
+            <span class="tag" style="background: rgba(255,255,255,0.1);">3</span> <strong>Verificables</strong> (por un tercero)
+          </div>
+        </div>
 
-        <h3 class="subtheme-title" id="st-iso-9001">Estructura Completa de ISO 9001</h3>
-        <ul>
-          <li><strong>Apartado 4. Sistema de gestión de la calidad:</strong> Identificación de procesos y documentación mínima obligatoria.</li>
-          <li><strong>Apartado 5. Responsabilidad de la dirección:</strong> Liderazgo y enfoque al cliente.</li>
-          <li><strong>Apartado 6. Gestión de los recursos:</strong> Personal formado e infraestructuras.</li>
-          <li><strong>Apartado 7. Realización del producto:</strong> ¡El <strong>único apartado que admite exclusiones</strong> justificadas!</li>
-          <li><strong>Apartado 8. Medición, análisis y mejora:</strong> Obliga a medir la satisfacción del cliente y realizar auditorías.</li>
-        </ul>
+        <div class="alert" style="border-left-color: #10b981; background: rgba(16, 185, 129, 0.1);">
+          <strong style="color: #34d399;">🔑 Concepto Clave:</strong> ¿Quién percibe y define la calidad? <strong>Quien la recibe (el cliente)</strong>.
+        </div>
+
+        <h3 class="subtheme-title" id="st-1-2">2. Las 4P de la Ingeniería del Software</h3>
+        <p>Estrategias clásicas para solucionar la histórica "crisis del software". Se incide en 4 aspectos vitales:</p>
+        <div class="grid-2" style="gap: 15px; margin-bottom: 30px;">
+          <div class="box" style="padding: 15px;">📦 <strong>Producto:</strong> Uso de métricas y metodologías.</div>
+          <div class="box" style="padding: 15px;">⚙️ <strong>Proceso:</strong> Modelos estandarizados (CMMI, ISO).</div>
+          <div class="box" style="padding: 15px;">👥 <strong>Personas:</strong> Talento y formación continua.</div>
+          <div class="box" style="padding: 15px;">🧩 <strong>Problema:</strong> Entender qué quiere realmente el usuario.</div>
+        </div>
+
+        <h3 class="subtheme-title" id="st-1-3">3. Las "3 E" (Eficaz vs Eficiente vs Efectivo)</h3>
+        <div class="grid-3">
+          <div class="box">
+            <h4>Eficaz 🎯</h4>
+            <p style="font-size: 0.95rem;">Logra el objetivo sin importar el coste. <em>Hace lo que tiene que hacer</em>.</p>
+          </div>
+          <div class="box">
+            <h4>Eficiente ⚡</h4>
+            <p style="font-size: 0.95rem;">Es eficaz, pero además hace un uso <strong>óptimo</strong> de los recursos y el tiempo.</p>
+          </div>
+          <div class="box">
+            <h4>Efectivo 📈</h4>
+            <p style="font-size: 0.95rem;">Eficacia mantenida en el <strong>tiempo</strong> (resultado sostenido).</p>
+          </div>
+        </div>
+
+        <h3 class="subtheme-title" id="st-1-4">4. QA vs QC 🚨 (El error más grave)</h3>
+        <p>Todo proyecto tiene dos caras: <strong>proceso</strong> y <strong>producto</strong>.</p>
+        <div class="grid-2">
+          <div class="box" style="border-top: 4px solid var(--c-iso); background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, rgba(0,0,0,0) 100%);">
+            <span class="tag" style="background: rgba(59, 130, 246, 0.2); color: #93c5fd;">QA (Aseguramiento)</span>
+            <ul style="margin-top: 15px; font-size: 0.95rem;">
+              <li><strong>Foco:</strong> El Proceso (métodos, estándares).</li>
+              <li><strong>Naturaleza:</strong> Preventivo.</li>
+              <li><strong>Técnico:</strong> NO (usa checklists).</li>
+              <li><strong>Estrella:</strong> Auditorías internas.</li>
+            </ul>
+          </div>
+          <div class="box" style="border-top: 4px solid var(--c-pai); background: linear-gradient(180deg, rgba(239, 68, 68, 0.05) 0%, rgba(0,0,0,0) 100%);">
+            <span class="tag" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5;">QC (Control)</span>
+            <ul style="margin-top: 15px; font-size: 0.95rem;">
+              <li><strong>Foco:</strong> El Producto (entregable).</li>
+              <li><strong>Naturaleza:</strong> Detectivo.</li>
+              <li><strong>Técnico:</strong> SÍ (requiere especialista).</li>
+              <li><strong>Estrella:</strong> Peer-reviews, pruebas, McCabe.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="alert" style="border-left-color: var(--c-iso); display: flex; align-items: center; gap: 15px;">
+          <span style="font-size: 1.5rem;">👑</span>
+          <div><strong>Regla de Oro:</strong> Una auditoría SIEMPRE es Aseguramiento de la Calidad (QA).</div>
+        </div>
+
+        <h3 class="subtheme-title" id="st-1-5">5. V&V y Modelos</h3>
+        <div class="grid-2">
+          <div class="box">
+            <h4>Verificación 🔍</h4>
+            <p style="font-size: 0.9rem;"><em>"¿Se está construyendo correctamente?"</em><br><br>Comprueba consistencia técnica fase a fase (Unitarias, Integración, Sistema).</p>
+          </div>
+          <div class="box">
+            <h4>Validación ✅</h4>
+            <p style="font-size: 0.9rem;"><em>"¿Se ha construido el producto correcto?"</em><br><br>Comprueba que cumple la necesidad real del cliente (Pruebas de Aceptación).</p>
+          </div>
+        </div>
+        <p style="font-size: 0.95rem;"><strong>Modelos (QUÉ hacer):</strong> CMMI, ISO. <strong>Metodologías (CÓMO hacerlo):</strong> Scrum, XP. No adaptes la empresa al modelo, adapta el modelo a la empresa con guías.</p>
       </section>
 
-      <!-- TEMA 2: CMMI -->
+      <!-- TEMA 2: ISO -->
       <section class="theme-section">
-        <h2 class="theme-title" id="t-cmmi">2. El Modelo CMMI y SCAMPI</h2>
+        <h2 class="theme-title" id="t-02" style="border-bottom-color: var(--c-iso); color: var(--c-iso);">2. Familia ISO 9000 y Norma ISO 9001</h2>
 
-        <h3 class="subtheme-title" id="st-cmmi-versiones">Evolución, Versiones y Estructura</h3>
-        <ul>
-          <li><strong>V1.3:</strong> 3 constelaciones (DEV, ACQ, SVC) y dos arquitecturas (Escalonada/Continua).</li>
-          <li><strong>V2.0 (ISACA):</strong> Desaparece formalmente el modelo Escalonado. Entran los Practice Groups (PG).</li>
-          <li><strong>V3.0 (Actual):</strong> Añade dominios transversales (DATA, DEV, PPL, SAF, SEC, SVC, SPM, VRT).</li>
+        <h3 class="subtheme-title" id="st-2-1">1. La Familia ISO 9000</h3>
+        <div class="grid-2">
+          <div class="box"><span class="tag">ISO 9000</span> <p style="font-size:0.9rem; margin:5px 0;">Fundamentos y vocabulario. <strong>No certificable</strong>.</p></div>
+          <div class="box" style="border-color: var(--c-iso); background: rgba(59, 130, 246, 0.05);"><span class="tag" style="background: var(--c-iso);">ISO 9001</span> <p style="font-size:0.9rem; margin:5px 0; color:#fff;">Requisitos del SGC (Eficacia). <strong>¡Única certificable!</strong></p></div>
+          <div class="box"><span class="tag">ISO 9004</span> <p style="font-size:0.9rem; margin:5px 0;">Guía éxito sostenido (Eficiencia). <strong>No certificable</strong>.</p></div>
+          <div class="box"><span class="tag">ISO 90003</span> <p style="font-size:0.9rem; margin:5px 0;">Guía para aplicar la 9001 a Software. <strong>No certificable</strong>.</p></div>
+        </div>
+
+        <h3 class="subtheme-title" id="st-2-2">2. Principios de Gestión de Calidad (7 Principios)</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+          <span class="box" style="padding: 10px 15px; font-size: 0.85rem;">1. Enfoque al cliente</span>
+          <span class="box" style="padding: 10px 15px; font-size: 0.85rem;">2. Liderazgo</span>
+          <span class="box" style="padding: 10px 15px; font-size: 0.85rem;">3. Compromiso personas</span>
+          <span class="box" style="padding: 10px 15px; font-size: 0.85rem;">4. Enfoque a procesos</span>
+          <span class="box" style="padding: 10px 15px; font-size: 0.85rem; border-color: #ef4444; color: #fca5a5;">5. Mejora continua (PDCA) 🚨</span>
+          <span class="box" style="padding: 10px 15px; font-size: 0.85rem;">6. Decisiones basadas en evidencia</span>
+          <span class="box" style="padding: 10px 15px; font-size: 0.85rem;">7. Gestión de relaciones</span>
+        </div>
+        <p style="font-size: 0.9rem; color: #fca5a5;">🚨 <em>Violar el principio de "Mejora Continua (Ciclo de Deming: PDCA)" cuesta la retirada del certificado.</em></p>
+
+        <h3 class="subtheme-title" id="st-2-3">3. Apartados Críticos de ISO 9001 (Estructura 4-8)</h3>
+        <div class="grid-2">
+          <div class="box" style="border-left: 4px solid var(--c-otros);">
+            <h4>Apartado 7: Realización del Producto</h4>
+            <p style="font-size: 0.9rem;"><strong>ÚNICO que admite exclusiones</strong> (aplicabilidad).</p>
+            <ul style="font-size: 0.85rem; padding-left: 15px;">
+              <li><strong>7.2:</strong> Requisitos legales se cumplen aunque el cliente no los pida.</li>
+              <li><strong>7.4 Compras:</strong> Prohibido comprar a cualquiera. Es obligatorio definir <strong>3 criterios</strong> concretos para proveedores: <strong>Entrada, Mantenimiento y Salida</strong>. <em>(Freeware cuenta como producto adquirido)</em>.</li>
+            </ul>
+          </div>
+          <div class="box" style="border-left: 4px solid var(--c-sgcs);">
+            <h4>Apartado 8: Medición, Análisis y Mejora</h4>
+            <p style="font-size: 0.9rem;">El más importante en la práctica.</p>
+            <ul style="font-size: 0.85rem; padding-left: 15px;">
+              <li>Obliga a medir satisfacción del cliente.</li>
+              <li><strong>Obliga a realizar Auditorías Internas</strong>.</li>
+              <li>Motor de las Acciones Correctivas.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEMA 3: CERTIFICACIÓN -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-03" style="border-bottom-color: #fb923c; color: #fb923c;">3. Certificación y Auditorías</h2>
+        
+        <h3 class="subtheme-title" id="st-3-1">1. Entidades de Certificación</h3>
+        <div class="grid-3">
+          <div class="box text-center" style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 5px;">📜</div>
+            <h4>ISO</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Normaliza. Crea y emite el estándar.</p>
+          </div>
+          <div class="box text-center" style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 5px;">⚖️</div>
+            <h4>ENAC</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Acredita a las certificadoras. <strong>NO certifica</strong> empresas.</p>
+          </div>
+          <div class="box text-center" style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 5px;">✅</div>
+            <h4>AENOR / LRQA</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Certifican a la empresa. AENOR además normaliza en España (UNE).</p>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem; text-align: center;"><em>La ISO certifica el <strong>proceso</strong>, no el producto técnico final, y es voluntaria.</em></p>
+
+        <h3 class="subtheme-title" id="st-3-2">2. Fases del Proceso y No Conformidades</h3>
+        <p><strong>Fases:</strong> 1) Previa (opcional) &rarr; 2) Certificación (emiten "recomendación") &rarr; 3) Seguimiento (anual, <strong>nunca sorpresa</strong>).</p>
+        
+        <div class="alert" style="border-left-color: #f59e0b; background: rgba(245, 158, 11, 0.1);">
+          <strong>Plazos ante No Conformidades (NC):</strong><br>
+          <ul style="margin-top: 5px; margin-bottom: 0;">
+            <li><strong style="color: #ef4444;">Mayores:</strong> Plazo exacto de <strong>6 meses</strong> para corregirlas. Si no, se empieza de cero.</li>
+            <li><strong style="color: #fbbf24;">Menores:</strong> Se revisan en la siguiente auditoría de seguimiento.</li>
+          </ul>
+        </div>
+
+        <h4 style="margin-top: 30px;">Las 5 Restricciones del Auditor 🚨</h4>
+        <div class="grid-3" style="gap: 10px;">
+          <div class="box" style="padding: 10px; font-size: 0.85rem; border-left: 3px solid #ef4444;">1. Ajeno al área (Independiente)</div>
+          <div class="box" style="padding: 10px; font-size: 0.85rem; border-left: 3px solid #f59e0b;">2. <strong>Conocimientos</strong> en auditar</div>
+          <div class="box" style="padding: 10px; font-size: 0.85rem; border-left: 3px solid #f59e0b;">3. <strong>Experiencia</strong> en auditar</div>
+          <div class="box" style="padding: 10px; font-size: 0.85rem; border-left: 3px solid #3b82f6;">4. <strong>Conocimientos</strong> técnicos del área</div>
+          <div class="box" style="padding: 10px; font-size: 0.85rem; border-left: 3px solid #3b82f6;">5. <strong>Experiencia</strong> técnica en el área</div>
+        </div>
+      </section>
+
+      <!-- TEMA 4: CMMI -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-04" style="border-bottom-color: var(--c-cmmi); color: var(--c-cmmi);">4. Modelo CMMI (Madurez y Prácticas)</h2>
+
+        <h3 class="subtheme-title" id="st-4-1">1. Paradigma CMMI y Dominios (v3.0)</h3>
+        <p>Aplica <strong>sólo al sector TIC</strong> (ISACA/SEI). <strong>No da un certificado oficial de gobierno</strong>, da un rating público en PARS.</p>
+        <div class="box" style="margin-bottom: 20px;">
+          <h4 style="margin-top: 0; margin-bottom: 10px;">Los 8 Dominios de CMMI v3.0</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 10px; color: #cbd5e1;">DATA (Datos), DEV (Desarrollo), PPL (Personas), SAF (Safety/Protección), SEC (Security/Seguridad), SVC (Servicios), SPM (Gestión de proveedores) y VRT (Trabajo virtual).</p>
+          <div style="background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid #ef4444; font-size: 0.85rem;">
+            🚨 <strong>Trampa típica:</strong> Safety != Security. <strong>Safety</strong> protege al usuario del sistema; <strong>Security</strong> protege al sistema (cifrado, accesos).
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="box">
+            <h4>Escalonada (Staged)</h4>
+            <p style="font-size: 0.85rem;">Madurez global de 1 a 5 para toda la organización. Incremental (no salta niveles).</p>
+          </div>
+          <div class="box">
+            <h4>Continua (Continuous)</h4>
+            <p style="font-size: 0.85rem;">Capacidad evaluada PA a PA individualmente. Mejora donde más duele.</p>
+          </div>
+        </div>
+
+        <h3 class="subtheme-title" id="st-4-2">2. Los 5 Niveles (Escalonada)</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div class="box" style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.01);">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: #475569; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+            <div><strong>Inicial:</strong> Caótico, sin diploma.</div>
+          </div>
+          <div class="box" style="display: flex; align-items: center; gap: 15px; padding: 12px; border-left: 4px solid #6366f1;">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: #6366f1; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+            <div>
+              <strong>Gestionado:</strong> Primer diploma. Procesos proyecto a proyecto. (REQM, PP, PMC, SAM).<br>
+              <span style="font-size: 0.8rem; color: #a5b4fc;">* Excepción: La PA <strong>SAM</strong> (Proveedores) está exenta si la empresa demuestra que no tiene proveedores significativos.</span>
+            </div>
+          </div>
+          <div class="box" style="display: flex; align-items: center; gap: 15px; padding: 12px; border-left: 4px solid #8b5cf6;">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: #8b5cf6; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
+            <div><strong>Definido:</strong> Estandarizado. <strong>Aparece Ingeniería de Software por 1ª vez</strong> (TS, VER, VAL).</div>
+          </div>
+          <div class="box" style="display: flex; align-items: center; gap: 15px; padding: 12px; border-left: 4px solid #d946ef;">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: #d946ef; display: flex; align-items: center; justify-content: center; font-weight: bold;">4</div>
+            <div><strong>Cuantitativo:</strong> Uso de estadísticas puras (OPP, QPM).</div>
+          </div>
+          <div class="box" style="display: flex; align-items: center; gap: 15px; padding: 12px; border-left: 4px solid #ec4899;">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: #ec4899; display: flex; align-items: center; justify-content: center; font-weight: bold;">5</div>
+            <div><strong>En optimización:</strong> Innovación y causas raíz (CAR, OPM).</div>
+          </div>
+        </div>
+
+        <h3 class="subtheme-title" id="st-4-3">3. Componentes CMMI</h3>
+        <ul style="margin-bottom: 10px;">
+          <li><strong style="color: #ef4444;">Metas:</strong> OBLIGATORIAS. Si fallan, no hay nivel.</li>
+          <li><strong style="color: #3b82f6;">Prácticas:</strong> ESPERADAS. Se pueden sustituir por otras equivalentes.</li>
+          <li><strong style="color: #9ca3af;">Subprácticas:</strong> INFORMATIVAS.</li>
         </ul>
+        <p style="font-size:0.9rem; color:#a78bfa;">* Las <strong>Peer Reviews</strong> (revisiones por pares) son prácticas obligatorias para aprobar CMMI 3+.</p>
+      </section>
 
-        <h3 class="subtheme-title" id="st-cmmi-20pas">Catálogo de 20 Core PAs (V2.0)</h3>
-        <div class="grid-2 text-sm">
+      <!-- TEMA 5: SCAMPI -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-05" style="border-bottom-color: #d946ef; color: #d946ef;">5. Evaluación CMMI (SCAMPI)</h2>
+
+        <h3 class="subtheme-title" id="st-5-1">1. Tipos de Appraisals y Fases</h3>
+        <div class="grid-3" style="margin-bottom: 20px;">
           <div class="box">
-            <h4 style="font-size: 1rem; color: #93c5fd;">Gestión y Análisis</h4>
-            <ul style="margin: 0;"><li><strong>RDM:</strong> Requisitos.</li><li><strong>EST & PLAN:</strong> Estimación/Planificación.</li><li><strong>MC & RSK & SAM:</strong> Monitorización/Riesgos/Proveedores.</li></ul>
+            <h4>Benchmark (SCAMPI A)</h4>
+            <p style="font-size: 0.85rem;">Auditoría formal que otorga Rating Público. Validez de 3 años.</p>
           </div>
           <div class="box">
-            <h4 style="font-size: 1rem; color: #a7f3d0;">Desarrollo y QA</h4>
-            <ul style="margin: 0;"><li><strong>TS & PI:</strong> Diseño/Integración.</li><li><strong>VV & PR:</strong> Pruebas/Revisiones.</li><li><strong>CM & PQA:</strong> Configuración/Calidad.</li></ul>
+            <h4>Sustainment</h4>
+            <p style="font-size: 0.85rem;">Extiende un Benchmark (+2 años). Máx 3 consecutivos.</p>
           </div>
-          <div class="box" style="grid-column: span 2;">
-            <h4 style="font-size: 1rem; color: #ddd6fe;">Organización y Mejora</h4>
-            <ul style="margin: 0; display: grid; grid-template-columns: 1fr 1fr;">
-              <li><strong>PAD & PCM:</strong> Procesos.</li><li><strong>OT & MPM:</strong> Formación/Rendimiento.</li>
-              <li><strong>GOV & II:</strong> Gobierno/Infraestructura.</li><li><strong>DAR & CAR:</strong> Decisiones/Análisis Causal.</li>
+          <div class="box" style="opacity: 0.8;">
+            <h4>Evaluation (SCAMPI B/C)</h4>
+            <p style="font-size: 0.85rem;">Diagnóstico rápido. <strong>NO da rating ni diploma</strong>.</p>
+          </div>
+        </div>
+        <p><strong>Fases de la Evaluación:</strong></p>
+        <ol style="font-size: 0.95rem;">
+          <li><strong>Pre On-site:</strong> Presentar, Planificar y Preparar (recolección de artefactos).</li>
+          <li><strong>On-site:</strong> Evaluaciones presenciales (recogida de afirmaciones mediante entrevistas).</li>
+          <li><strong>Publicación:</strong> Emisión de resultados en PARS.</li>
+        </ol>
+
+        <h3 class="subtheme-title" id="st-5-2">2. Roles y Proyectos en la Muestra</h3>
+        <div class="grid-2">
+          <div class="box" style="border-left: 3px solid #a855f7;">
+            <h4>Roles del Equipo</h4>
+            <ul style="font-size: 0.85rem; margin-bottom: 0;">
+              <li><strong>Sponsor:</strong> Directivo que patrocina.</li>
+              <li><strong>Lead Appraiser (LA):</strong> Jefe auditor (ÚNICO que firma).</li>
+              <li><strong>ATMs:</strong> 4-8 evaluadores técnicos.</li>
+              <li><strong>OUC:</strong> Interfaz con la empresa (suele ser jefe de calidad).</li>
+              <li><strong>Participantes:</strong> Los entrevistados.</li>
+            </ul>
+          </div>
+          <div class="box" style="border-left: 3px solid #3b82f6;">
+            <h4>Proyectos Evaluados</h4>
+            <ul style="font-size: 0.85rem; margin-bottom: 0;">
+              <li><strong>Objetivo (Target):</strong> Aportan evidencia para TODAS las PAs evaluadas.</li>
+              <li><strong>No Objetivo:</strong> Sólo aportan evidencia para algunas PAs.</li>
+            </ul>
+            <div style="margin-top: 10px; font-size: 0.85rem; background: rgba(239, 68, 68, 0.1); padding: 8px; border-radius: 6px;">
+              🚨 <em>Regla de Oro: Debe haber al menos <strong>1 proyecto objetivo</strong> en la muestra.</em>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="subtheme-title" id="st-5-3">3. Evidencias y Bottom-Up</h3>
+        <p>Para aprobar una práctica: <strong>Artefacto (Doc objetivo) + Afirmación (Entrevista On-Site)</strong>. <em>(Prohibido crear nueva documentación durante el On-Site)</em>.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; margin-top: 15px;">
+          <span class="tag" style="background:#10b981; color:#fff;">FI (Fully)</span>
+          <span class="tag" style="background:#3b82f6; color:#fff;">LI (Largely)</span>
+          <span class="tag" style="background:#f59e0b; color:#fff;">PI (Partially)</span>
+          <span class="tag" style="background:#ef4444; color:#fff;">NI (Not Implemented)</span>
+        </div>
+        <p style="font-size: 0.9rem;">Si una sola práctica es <strong>PI o NI</strong> &rarr; Cae la Meta &rarr; Cae el Área de Proceso &rarr; <strong>Suspende todo el nivel CMMI</strong>.</p>
+      </section>
+
+      <!-- TEMA 6: OTROS Y MÉTRICAS -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-06" style="border-bottom-color: var(--c-otros); color: var(--c-otros);">6. Otros Modelos y Medición</h2>
+
+        <h3 class="subtheme-title" id="st-6-1">1. Modelos Secundarios</h3>
+        <div class="grid-2">
+          <div class="box"><strong>SPICE (ISO 15504) + ISO 12207:</strong> El nivel 1 es el primer nivel de calidad (no caótico). Su evolución es <strong>MMIS V.2</strong>.</div>
+          <div class="box"><strong>ITmark:</strong> Para PYMEs (<10 emp). Élite = CMMI 3.</div>
+          <div class="box" style="grid-column: span 2; text-align:center;"><strong>SwTQM / Software de Cuenta:</strong> Solo el 14% de la nota final depende de ingeniería software (CMMI); el 86% es negocio (EFQM).</div>
+        </div>
+
+        <h3 class="subtheme-title" id="st-6-2">2. Escalas y Herramientas de Medición</h3>
+        <div class="grid-2">
+          <div class="box" style="background: rgba(245, 158, 11, 0.05); border-left: 3px solid var(--c-otros);">
+            <h4>Las 4 Escalas</h4>
+            <ul style="font-size: 0.85rem; margin-bottom:0;">
+              <li><strong>Nominal:</strong> Categorías sin orden.</li>
+              <li><strong>Ordinal:</strong> Jerarquía (1&lt;2&lt;3). Sin mates.</li>
+              <li><strong>Intervalo:</strong> El "0" es un valor real (ej. 0ºC).</li>
+              <li><strong>Razón (Ratio):</strong> El "0" es AUSENCIA total (0 Líneas de código).</li>
+            </ul>
+          </div>
+          <div class="box" style="background: rgba(245, 158, 11, 0.05); border-left: 3px solid var(--c-otros);">
+            <h4>Indicadores y Puntos Función</h4>
+            <p style="font-size: 0.85rem; margin-bottom:5px;"><strong>Indicador:</strong> Métrica + criterio de actuación.</p>
+            <p style="font-size: 0.85rem; margin-bottom:5px;"><strong>Puntos Función:</strong> Mide tamaño SW independiente de la tecnología.</p>
+            <p style="font-size: 0.85rem; margin-bottom:0;"><strong>GQM:</strong> Goal -> Question (1) -> Metric (N).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEMA 7: SGCS -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-07" style="border-bottom-color: var(--c-sgcs); color: var(--c-sgcs);">7. SGCS y Práctica Operativa</h2>
+
+        <h3 class="subtheme-title" id="st-7-1">1. Jerarquía Documental</h3>
+        <div class="box" style="margin-bottom: 20px; border: 1px solid rgba(16, 185, 129, 0.3);">
+          <div style="display:flex; flex-direction:column; gap:5px; font-family: monospace; font-size: 0.95rem;">
+            <div style="padding:8px; background: rgba(99, 102, 241, 0.1); border-radius: 6px;">1. <strong style="color: #818cf8;">Manual de Calidad</strong> (PÚBLICO, mapa de procesos globales)</div>
+            <div style="padding:8px; padding-left: 25px;">↳ <strong style="color: #cbd5e1;">Plan de Calidad</strong> (Registra metodologías y <strong>Desviaciones Concertadas*</strong>)</div>
+            <div style="padding:8px; padding-left: 50px;">↳ <strong style="color: #94a3b8;">Manual de Procedimientos</strong> (PRIVADO corporativo)</div>
+            <div style="padding:8px; padding-left: 75px;">↳ <strong style="color: #64748b;">Plantillas</strong></div>
+            <div style="padding:8px; padding-left: 100px;">↳ <strong style="color: #475569;">Guías</strong></div>
+            <div style="padding:8px; padding-left: 125px; background: rgba(239, 68, 68, 0.1); border-radius: 6px;">↳ <strong style="color: #fca5a5;">Registros de Calidad</strong> (Evidencia INMUTABLE)</div>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 20px;">* <strong>Desviaciones Concertadas:</strong> Alteraciones a la norma exigidas por el cliente (ej. la NASA obliga a usar su versionado). Se declaran siempre <em>por anticipado</em> en el Plan.</p>
+
+        <h3 class="subtheme-title" id="st-7-2">2. El Mapa de Proceso</h3>
+        <p>Pieza clave operativa. Tiene 4 puntos cardinales: <strong>Entradas</strong> (izq), <strong>Salidas</strong> (der), <strong>Controles/Guías</strong> (arriba), y <strong>Perfil responsable</strong> (abajo).</p>
+        <p style="font-size: 0.9rem;"><em>¡Ojo! Las plantillas no son entradas, son "Mecanismos" (controles por arriba).</em></p>
+
+        <h3 class="subtheme-title" id="st-7-3">3. Pruebas, Proyectos y Configuración</h3>
+        <div class="grid-3">
+          <div class="box">
+            <h4 style="color: #34d399;">Niveles de Pruebas</h4>
+            <p style="font-size: 0.85rem;">En diseño Alto Nivel preparo Integración. En Bajo Nivel preparo Unitarias. Las únicas obligatorias por ISO son las <strong>Aceptación</strong>.</p>
+          </div>
+          <div class="box">
+            <h4 style="color: #34d399;">El Proyecto</h4>
+            <p style="font-size: 0.85rem;"><strong>Discreto</strong> (fin temporal), <strong>No rutinario</strong>, y <strong>Complejo</strong>. (El Gantt es solo una hoja dentro de todo el Plan de Proyecto).</p>
+          </div>
+          <div class="box">
+            <h4 style="color: #34d399;">Configuración (Líneas Base)</h4>
+            <p style="font-size: 0.85rem;">Existen múltiples artefactos (ECS), pero <strong>sólo se admiten 2 Líneas Base</strong> oficiales: <strong>Requisitos</strong> y <strong>Producto</strong>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEMA 8: AUDITORIAS INTERNAS -->
+      <section class="theme-section">
+        <h2 class="theme-title" id="t-08" style="border-bottom-color: var(--c-pai); color: var(--c-pai);">8. Auditorías Internas y TGR</h2>
+
+        <h3 class="subtheme-title" id="st-8-1">1. VF vs AG (Nunca por sorpresa)</h3>
+        <div class="grid-2">
+          <div class="box" style="border-top: 3px solid #ef4444;">
+            <h4>Verificaciones de Fase (VF)</h4>
+            <ul style="font-size: 0.85rem;">
+              <li>Para <strong>proyectos</strong> concretos en hitos.</li>
+              <li>Planificadas por el <strong>Jefe Proyecto</strong>.</li>
+              <li>Auditor debe ser <strong>técnico SW</strong>.</li>
+            </ul>
+          </div>
+          <div class="box" style="border-top: 3px solid #8b5cf6;">
+            <h4>Auditorías Generales (AG)</h4>
+            <ul style="font-size: 0.85rem;">
+              <li>Para <strong>departamentos</strong> (RRHH, Compras).</li>
+              <li>Planificadas por el <strong>Resp. Calidad</strong>.</li>
+              <li>Auditor es experto en su área.</li>
             </ul>
           </div>
         </div>
 
-        <h3 class="subtheme-title" id="st-scampi">Auditoría SCAMPI: Fases y Reglas</h3>
-        <p>SCAMPI requiere <strong>Roles fijos:</strong> Sponsor, Lead Appraiser (LA), ATMs (equipo), y el OUC (coordinador organizativo). Se seleccionan proyectos objetivo (obligatorios) y de apoyo (opcionales).</p>
-        <p>Durante la fase <strong>On-Site</strong> (evaluación presencial), existe una regla estricta: <em>Está terminantemente prohibido crear documentación de nueva cuña</em>.</p>
-        <div class="alert" style="border-left-color: var(--c-cmmi);">
-          En el análisis Bottom-Up, las prácticas se califican en FI/LI/PI/NI. <strong>Un Practice Group (PG) solo se considera satisfecho si TODAS sus prácticas obtienen FI o LI.</strong>
-        </div>
-      </section>
-
-      <!-- TEMA 3: OTROS MODELOS Y MEDICIÓN -->
-      <section class="theme-section">
-        <h2 class="theme-title" id="t-otros">3. Otros Modelos y Métricas</h2>
-
-        <h3 class="subtheme-title" id="st-modelos-secundarios">Ecosistema Alternativo</h3>
-        <ul>
-          <li><strong>SPICE (ISO/IEC 15504):</strong> Esquema AENOR exige 3 procesos en Nivel 1, 7 en Nivel 2, y 11 en Nivel 3.</li>
-          <li><strong>MMIS V.2:</strong> 5 niveles: Básico, Gestionado, Establecido, Predecible e Innovado.</li>
-          <li><strong>ITmark:</strong> Sello élite para PYMEs. Evalúa Negocio, Seguridad (ISO 27000) e Ingeniería.</li>
-        </ul>
-
-        <h3 class="subtheme-title" id="st-gqm">Medición: GQM, PSM y Ficha Indicador</h3>
-        <p>Toda métrica GQM (Goal-Question-Metric) requiere <strong>8 campos obligatorios</strong> en su Ficha de Indicador: Nombre, Objetivo, Fórmula, Unidad, Origen, Datos de entrada, Período, y Criterios. Todas las métricas confluyen en el Cuadro de Mando de Calidad (4 perspectivas: Financiera, Cliente, Procesos, Aprendizaje).</p>
-      </section>
-
-      <!-- TEMA 4: SGCS Y PRÁCTICA -->
-      <section class="theme-section">
-        <h2 class="theme-title" id="t-sgcs">4. SGCS y Práctica Operativa</h2>
-
-        <h3 class="subtheme-title" id="st-jerarquia">Jerarquía Documental del SGC</h3>
-        <p>Todo el conocimiento corporativo obedece a una rigurosa jerarquía documental. El estrato superior es el <strong>Manual de Calidad</strong>, siendo el único documento de naturaleza <strong>pública</strong> de la pirámide. El resto de la cascada desciende al terreno operativo y <strong>privado</strong>:</p>
-        <div class="box" style="margin-bottom: 20px;">
-          <ol style="margin:0; font-family: monospace; font-size: 0.95rem; line-height: 2;">
-            <li><strong style="color: #6366f1;">Manual de Calidad</strong> (Público, contiene el mapa de procesos)</li>
-            <li>&nbsp;&nbsp;↳ <strong style="color: #cbd5e1;">Plan de Calidad</strong> (Particular de cada proyecto)</li>
-            <li>&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong style="color: #94a3b8;">Manual de Procedimientos</strong> (Privado, el compendio de procesos)</li>
-            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong style="color: #64748b;">Plantillas</strong></li>
-            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong style="color: #475569;">Guías</strong></li>
-            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong style="color: #334155;">Registros de Calidad</strong> (Evidencias inmutables de ejecución)</li>
-          </ol>
+        <h3 class="subtheme-title" id="st-8-2">2. Las 4 VFs Estratégicas 🎯</h3>
+        <div class="grid-2" style="gap:10px;">
+          <div class="box" style="padding:15px; font-size:0.9rem;">1. Tras captura de <strong>Requisitos</strong>.</div>
+          <div class="box" style="padding:15px; font-size:0.9rem;">2. Tras la <strong>Programación</strong> (pre-entornos).</div>
+          <div class="box" style="padding:15px; font-size:0.9rem;">3. Antes de Pruebas de <strong>Aceptación</strong>.</div>
+          <div class="box" style="padding:15px; font-size:0.9rem;">4. Al <strong>Cierre</strong> del Proyecto.</div>
         </div>
 
-        <h3 class="subtheme-title" id="st-proyecto">El Proyecto y su Ciclo Operativo</h3>
-        <p>Se considera <strong>Proyecto</strong> a una iniciativa discreta (temporal), no rutinaria y de alta complejidad (nota: el coste o tiempo son atributos, no características definitorias). El documento que lo articula es el <em>Plan de Proyecto</em>.</p>
-        <p>El ciclo operativo de desarrollo presenta <strong>3 niveles de flexibilidad</strong> (por fase, por salida y por revisión). Además, al operar bajo un modelo en "V", el esfuerzo de pruebas se prevé durante el propio diseño:</p>
-        <ul>
-          <li>El <em>Diseño de Alto Nivel (Arquitectura)</em> prepara los planes de Pruebas de <strong>Integración</strong>.</li>
-          <li>El <em>Diseño de Bajo Nivel</em> prepara los planes de Pruebas <strong>Unitarias</strong>.</li>
-          <li>El <em>Prototipado</em> se asume como técnica de contención que pertenece, de forma estricta, a la fase de <strong>Requisitos</strong>.</li>
-        </ul>
-
-        <h3 class="subtheme-title" id="st-configuracion">Gestión de la Configuración y Trazabilidad</h3>
-        <ul>
-          <li><strong>Elemento de Configuración Software (ECS):</strong> Artefactos controlados individualmente.</li>
-          <li><strong>Línea Base (Baseline):</strong> Sólo existen oficialmente dos: la de <em>Requisitos</em>, y la de <em>Producto</em> (que se establece obligatoriamente al finalizar con éxito las pruebas de Sistema).</li>
-          <li><strong>RTF (Revisiones Técnicas Formales):</strong> Revisiones tempranas ejecutadas por pares.</li>
-        </ul>
-      </section>
-
-      <!-- TEMA 5: AUDITORÍAS -->
-      <section class="theme-section">
-        <h2 class="theme-title" id="t-auditorias">5. Auditorías Internas y Evaluaciones</h2>
-
-        <h3 class="subtheme-title" id="st-tipos-auditorias">Mecánica de la Auditoría: "Nunca por Sorpresa"</h3>
-        <p>Dado que la auditoría es puro <strong>Aseguramiento (QA)</strong> y exige una vasta inversión de tiempo en entrevistas y revisiones por parte del equipo, se fundamenta en un principio irrenunciable: <strong>Las auditorías nunca se realizan por sorpresa</strong>. El acuerdo de fechas con el auditado es obligatorio.</p>
-        
-        <p>Operativamente, el Sistema de Gestión de Calidad se audita en dos frentes simultáneos (VF y AG):</p>
-        <div class="grid-2">
-          <div class="box" style="border-top-color: #8b5cf6;">
-            <h4>Verificaciones de Fase (VF)</h4>
-            <p>Se aplican a <strong>proyectos en curso</strong> en hitos específicos. Son planificadas por el Jefe de Proyecto y exigen un auditor que sea puramente <em>técnico SW</em>.</p>
-          </div>
-          <div class="box" style="border-top-color: #ec4899;">
-            <h4>Auditorías Generales (AG)</h4>
-            <p>Se aplican a <strong>departamentos horizontales</strong> (Compras, RRHH). Son planificadas por el Responsable de Calidad y el auditor <em>no necesita ser técnico</em>.</p>
-          </div>
+        <h3 class="subtheme-title" id="st-8-3">3. Acciones: Correctivas vs Preventivas</h3>
+        <div class="alert" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-left: 4px solid var(--c-pai);">
+          <p style="margin-top:0;"><strong>Aclaración Estricta: Son totalmente disconexas.</strong></p>
+          <ul style="font-size: 0.9rem; margin-bottom:0;">
+            <li><strong style="color:#fca5a5;">Correctivas:</strong> Atacan una No Conformidad (NC) <strong>ya ocurrida</strong> y detectada. Ponen parche o arreglan un fuego real.</li>
+            <li><strong style="color:#6ee7b7;">Preventivas:</strong> Atacan la "Causa raíz" de un <strong>riesgo potencial</strong> antes de que estalle. ISO 2015 las llama "Gestión de Riesgos".</li>
+          </ul>
         </div>
 
-        <p>Para no paralizar el proyecto, la normativa exige aplicar estratégicamente <strong>4 Verificaciones de Fase (VF) obligatorias</strong> en el ciclo de vida:</p>
-        <ol>
-          <li>Tras los <strong>Requisitos</strong> (asegurar el mandato del cliente).</li>
-          <li>Tras la <strong>Programación</strong> (antes de entrar a los entornos de pruebas formales).</li>
-          <li>Antes de las <strong>Pruebas de Aceptación</strong> (certificar el entregable final).</li>
-          <li>Al <strong>Cierre</strong> del Proyecto (historificar y devolver recursos).</li>
-        </ol>
-
-        <h3 class="subtheme-title" id="st-auditor">Las 5 Restricciones Inviolables del Auditor</h3>
-        <div class="alert" style="border-left-color: var(--c-pai);">
-          Para que una auditoría mantenga su validez legal y procesal, el perfil seleccionado debe cumplir de forma simultánea e inflexible <strong>5 características</strong>:
-          <br><br>1. <strong>Ajeno:</strong> Inmunidad jerárquica frente al departamento auditado.
-          <br>2. <strong>Conocimientos en auditar:</strong> Formación en técnicas de entrevista y muestreo.
-          <br>3. <strong>Experiencia en auditar:</strong> Horas previas auditando (ej. como "auditor en prácticas").
-          <br>4. <strong>Conocimientos en lo auditado:</strong> Teoría sobre el área (ej. conocer las normas de RRHH o Java).
-          <br>5. <strong>Experiencia en lo auditado:</strong> Background práctico demostrable en el área evaluada.
-        </div>
-
-        <h3 class="subtheme-title" id="st-nc-ac">Aclaración Estricta: Acciones Correctivas vs Preventivas</h3>
-        <p>Si la evaluación detecta desviaciones (No Conformidades), se ejecutan acciones para mitigarlas. <strong>Es vital comprender que son mecanismos disconexos: no se ligan secuencialmente.</strong></p>
-        <ul>
-          <li><strong>Acciones Correctivas:</strong> Su detonante es una No Conformidad que <em>ya ha ocurrido</em> (ej. detectada en la auditoría). Su objetivo es atacar la deficiencia ocurrida para solventar el daño.</li>
-          <li><strong>Acciones Preventivas:</strong> Su detonante es una <em>sugerencia u oportunidad de mejora</em>. Atacan la causa raíz de un riesgo <em>antes de que este logre materializarse</em> y crear una No Conformidad.</li>
-        </ul>
+        <h3 class="subtheme-title" id="st-8-4">4. El Procedimiento TGR</h3>
+        <p>11 Apartados. El truco organizativo es: el <strong>Apartado 10 (Flujo de Trabajo) se diseña mentalmente primero</strong>, para luego poder rellenar el Apartado 6 (Responsabilidades). El Apartado 9 indica que los informes de auditorías van a la Revisión Anual de Dirección.</p>
       </section>
 
       <div style="height: 120px;"></div>
     </div>
-  </main>
+</main>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("toggle-sidebar");
+      const sidebar = document.getElementById("sidebar");
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("collapsed");
+      });
+
       const navLinksContainer = document.getElementById("nav-links");
       const headings = document.querySelectorAll("#main-content h2.theme-title, #main-content h3.subtheme-title");
       
