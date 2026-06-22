@@ -41,9 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   let currentIndex = 0;
   
-  const cardEl = document.getElementById('flashcard');
-  const qEl = document.getElementById('card-question');
-  const aEl = document.getElementById('card-answer');
+  const wrapperEl = document.getElementById('flashcards-wrapper');
   const currEl = document.getElementById('current-card');
   const totalEl = document.getElementById('total-cards');
   const btnPrev = document.getElementById('btn-prev');
@@ -63,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     sliderEl.addEventListener('input', (e) => {
       currentIndex = parseInt(e.target.value);
-      renderCard();
+      updateCards();
     });
 
     if (!topic && Object.keys(window.FlashcardsData).length > 0) {
@@ -107,69 +105,100 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
-  function renderCard() {
-    cardEl.classList.remove('flipped');
-    setTimeout(() => {
-      const card = cards[currentIndex];
-      
-      const frontTopic = document.getElementById('front-topic');
-      const frontCategory = document.getElementById('front-category');
-      const backTopic = document.getElementById('back-topic');
-      const backCategory = document.getElementById('back-category');
-      
-      if (frontTopic) {
-        const tName = card.topic ? titles[card.topic] || card.topic : "";
-        const cName = card.category || "";
-        
-        frontTopic.textContent = tName;
-        backTopic.textContent = tName;
-        frontCategory.textContent = cName;
-        backCategory.textContent = cName;
-        
-        frontTopic.style.display = tName ? 'block' : 'none';
-        backTopic.style.display = tName ? 'block' : 'none';
-        frontCategory.style.display = cName ? 'block' : 'none';
-        backCategory.style.display = cName ? 'block' : 'none';
-      }
-      
-      function parseMarkdown(text) {
-        if (!text) return '';
-        return text
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*(.*?)\*/g, '<em>$1</em>')
-          .replace(/\n/g, '<br>');
-      }
-      
-      qEl.innerHTML = parseMarkdown(card.q);
-      aEl.innerHTML = parseMarkdown(card.a);
-      currEl.textContent = currentIndex + 1;
-      
-      btnPrev.disabled = currentIndex === 0;
-      btnNext.disabled = currentIndex === cards.length - 1;
-      btnPrev.style.opacity = btnPrev.disabled ? '0.5' : '1';
-      btnNext.style.opacity = btnNext.disabled ? '0.5' : '1';
-      
-      if (sliderEl) {
-        sliderEl.value = currentIndex;
-      }
-    }, 150); // wait for flip animation to hide content if it was flipped
+  function parseMarkdown(text) {
+    if (!text) return '';
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
   }
-  
-  cardEl.addEventListener('click', () => {
-    cardEl.classList.toggle('flipped');
-  });
-  
+
+  function initCards() {
+    wrapperEl.innerHTML = '';
+    cards.forEach((card, index) => {
+      const cardEl = document.createElement('div');
+      cardEl.className = 'flashcard-container';
+      cardEl.dataset.index = index;
+      
+      const tName = card.topic ? (titles[card.topic] || card.topic) : "";
+      const cName = card.category || "";
+      const displayTopic = tName ? 'block' : 'none';
+      const displayCat = cName ? 'block' : 'none';
+
+      cardEl.innerHTML = `
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="card-badges">
+              <span class="badge topic-badge" style="display: ${displayTopic}">${tName}</span>
+              <span class="badge category-badge" style="display: ${displayCat}">${cName}</span>
+            </div>
+            <div class="flashcard-content">${parseMarkdown(card.q)}</div>
+            <div class="flashcard-hint">Haz clic para voltear</div>
+          </div>
+          <div class="flashcard-back">
+            <div class="card-badges">
+              <span class="badge topic-badge" style="display: ${displayTopic}">${tName}</span>
+              <span class="badge category-badge" style="display: ${displayCat}">${cName}</span>
+            </div>
+            <div class="flashcard-content">${parseMarkdown(card.a)}</div>
+          </div>
+        </div>
+      `;
+
+      cardEl.addEventListener('click', () => {
+        if (index === currentIndex) {
+          cardEl.classList.toggle('flipped');
+        } else if (index === currentIndex - 1 || index === currentIndex + 1) {
+          currentIndex = index;
+          updateCards();
+        }
+      });
+
+      wrapperEl.appendChild(cardEl);
+    });
+  }
+
+  function updateCards() {
+    const allCards = document.querySelectorAll('.flashcard-container');
+    allCards.forEach((el, index) => {
+      el.classList.remove('card-active', 'card-prev', 'card-next');
+      
+      if (index === currentIndex) {
+        el.classList.add('card-active');
+      } else if (index === currentIndex - 1) {
+        el.classList.add('card-prev');
+        el.classList.remove('flipped');
+      } else if (index === currentIndex + 1) {
+        el.classList.add('card-next');
+        el.classList.remove('flipped');
+      } else {
+        el.classList.remove('flipped');
+      }
+    });
+
+    currEl.textContent = currentIndex + 1;
+    
+    btnPrev.disabled = currentIndex === 0;
+    btnNext.disabled = currentIndex === cards.length - 1;
+    btnPrev.style.opacity = btnPrev.disabled ? '0.5' : '1';
+    btnNext.style.opacity = btnNext.disabled ? '0.5' : '1';
+    
+    if (sliderEl) {
+      sliderEl.value = currentIndex;
+    }
+  }
+
   btnNext.addEventListener('click', () => {
     if (currentIndex < cards.length - 1) {
       currentIndex++;
-      renderCard();
+      updateCards();
     }
   });
   
   btnPrev.addEventListener('click', () => {
     if (currentIndex > 0) {
       currentIndex--;
-      renderCard();
+      updateCards();
     }
   });
   
@@ -178,19 +207,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowRight' || e.key === 'd') {
       if (currentIndex < cards.length - 1) {
         currentIndex++;
-        renderCard();
+        updateCards();
       }
     } else if (e.key === 'ArrowLeft' || e.key === 'a') {
       if (currentIndex > 0) {
         currentIndex--;
-        renderCard();
+        updateCards();
       }
     } else if (e.key === ' ' || e.key === 'ArrowUp' || e.key === 'w' || e.key === 'ArrowDown' || e.key === 's') {
-      cardEl.classList.toggle('flipped');
+      const activeCard = document.querySelector('.flashcard-container.card-active');
+      if (activeCard) {
+        activeCard.classList.toggle('flipped');
+      }
       e.preventDefault();
     }
   });
   
-  renderCard();
+  initCards();
+  updateCards();
 });
 // Slider code is intact

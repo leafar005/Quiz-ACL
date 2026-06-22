@@ -27,7 +27,8 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
-  overflow: hidden; /* prevent scrollbar when flipping */
+  overflow-x: hidden; /* prevent horizontal scrollbar during animations */
+  overflow-y: auto;
 }
 
 /* Background animation */
@@ -97,19 +98,57 @@ body {
   color: var(--text-primary);
 }
 
-.flashcard-container {
+.flashcards-wrapper {
+  position: relative;
   width: 100%;
   max-width: 700px;
   height: 450px;
-  perspective: 1500px;
   margin-bottom: 30px;
-  cursor: pointer;
-  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  perspective: 1500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.flashcard-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateX(0) scale(0.8);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flashcard-container.card-active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+  z-index: 3;
+}
+
+.flashcard-container.card-prev {
+  opacity: 0.4;
+  transform: translateX(-30%) scale(0.85) rotateY(5deg);
+  pointer-events: auto;
+  z-index: 2;
+  filter: brightness(0.5);
+}
+
+.flashcard-container.card-next {
+  opacity: 0.4;
+  transform: translateX(30%) scale(0.85) rotateY(-5deg);
+  pointer-events: auto;
+  z-index: 2;
+  filter: brightness(0.5);
+}
+
+.flashcard-container.card-prev:hover,
+.flashcard-container.card-next:hover {
+  opacity: 0.7;
+  filter: brightness(0.8);
 }
 
 .flashcard-inner {
@@ -261,9 +300,17 @@ button:disabled {
 }
 
 @media (max-width: 768px) {
-  .flashcard-container {
+  .flashcards-wrapper {
     height: 400px;
-    padding: 0 20px;
+  }
+  .flashcard-container {
+    padding: 0 10px;
+  }
+  .flashcard-container.card-prev {
+    transform: translateX(-15%) scale(0.85);
+  }
+  .flashcard-container.card-next {
+    transform: translateX(15%) scale(0.85);
   }
   .flashcard-front, .flashcard-back {
     padding: 30px 20px;
