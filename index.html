@@ -328,12 +328,19 @@
       }
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // Small timeout to ensure QuizStats is fully loaded
-      setTimeout(() => {
+    function loadStats() {
+      if (window.QuizStats && typeof window.QuizStats.renderIndexWidget === 'function') {
         window.QuizStats.renderIndexWidget('stats-container');
-      }, 50);
-    });
+      } else {
+        setTimeout(loadStats, 50);
+      }
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadStats);
+    } else {
+      loadStats();
+    }
   </script>
 </body>
 </html>

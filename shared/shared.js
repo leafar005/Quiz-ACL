@@ -7,18 +7,32 @@ window.showCustomModal = function(options) {
   const box = document.createElement('div');
   box.className = 'custom-modal-box';
   
-  let html = '';
-  if (options.title) html += `<h3 class="custom-modal-title">${options.title}</h3>`;
-  if (options.desc) html += `<p class="custom-modal-desc">${options.desc}</p>`;
+  const titleEl = document.createElement('h3');
+  if (options.title) {
+    titleEl.className = 'custom-modal-title';
+    titleEl.textContent = options.title;
+    box.appendChild(titleEl);
+  }
   
-  html += `<div class="custom-modal-actions">`;
-  const uniqueId = Date.now() + Math.random().toString(36).substr(2, 9);
+  const descEl = document.createElement('p');
+  if (options.desc) {
+    descEl.className = 'custom-modal-desc';
+    descEl.textContent = options.desc;
+    box.appendChild(descEl);
+  }
+  
+  const actionsEl = document.createElement('div');
+  actionsEl.className = 'custom-modal-actions';
+  const uniqueId = Date.now() + Math.random().toString(36).substring(2, 11);
   options.buttons.forEach((btn, i) => {
-    html += `<button class="custom-modal-btn ${btn.style || 'secondary'}" id="modal-btn-${uniqueId}-${i}">${btn.text}</button>`;
+    const btnEl = document.createElement('button');
+    btnEl.className = `custom-modal-btn ${btn.style || 'secondary'}`;
+    btnEl.id = `modal-btn-${uniqueId}-${i}`;
+    btnEl.textContent = btn.text;
+    actionsEl.appendChild(btnEl);
   });
-  html += `</div>`;
+  box.appendChild(actionsEl);
   
-  box.innerHTML = html;
   overlay.appendChild(box);
   document.body.appendChild(overlay);
   
@@ -108,7 +122,7 @@ window.QuizStats = {
     if (saved) {
       try {
         this.data = { ...this.data, ...JSON.parse(saved) };
-      } catch (e) {}
+      } catch (e) { console.error('Stats corrupted, resetting', e); this.reset(); }
     }
   },
 
@@ -149,10 +163,10 @@ window.QuizStats = {
     this.save();
     
     // Check achievements
-    if (this.data.questionsAnswered === 1) this.unlock('FIRST_BLOOD');
+    if (this.data.questionsAnswered >= 1) this.unlock('FIRST_BLOOD');
     if (this.data.correctAnswers >= 50) this.unlock('SNIPER');
-    if (this.data.questionsAnswered === 100) this.unlock('CENTURION');
-    if (this.data.questionsAnswered === 500) this.unlock('SCHOLAR');
+    if (this.data.questionsAnswered >= 100) this.unlock('CENTURION');
+    if (this.data.questionsAnswered >= 500) this.unlock('SCHOLAR');
   },
 
   addQuizCompleted(payload) {
@@ -177,10 +191,10 @@ window.QuizStats = {
 
     this.save();
     
-    if (this.data.quizzesCompleted === 1) this.unlock('WARM_UP');
-    if (this.data.quizzesCompleted === 10) this.unlock('TEN_QUIZZES');
-    if (this.data.quizzesCompleted === 50) this.unlock('FIFTY_QUIZZES');
-    if (pct === 100) this.unlock('PERFECT');
+    if (this.data.quizzesCompleted >= 1) this.unlock('WARM_UP');
+    if (this.data.quizzesCompleted >= 10) this.unlock('TEN_QUIZZES');
+    if (this.data.quizzesCompleted >= 50) this.unlock('FIFTY_QUIZZES');
+    if (pct >= 100) this.unlock('PERFECT');
     
     // Time achievements
     if (total >= 10 && elapsed < 60) this.unlock('SPEEDRUNNER');
@@ -218,11 +232,25 @@ window.QuizStats = {
   showToast(ach) {
     const toast = document.createElement('div');
     toast.className = 'achievement-toast';
-    toast.innerHTML = `<span style="font-size: 2rem;">${ach.icon}</span> 
-      <div>
-        <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Logro Desbloqueado</div>
-        <div style="font-size: 1.1rem;">${ach.title}</div>
-      </div>`;
+    
+    const iconSpan = document.createElement('span');
+    iconSpan.style.fontSize = '2rem';
+    iconSpan.textContent = ach.icon;
+    toast.appendChild(iconSpan);
+    
+    const textDiv = document.createElement('div');
+    const labelDiv = document.createElement('div');
+    labelDiv.style.cssText = 'font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;';
+    labelDiv.textContent = 'Logro Desbloqueado';
+    
+    const titleDiv = document.createElement('div');
+    titleDiv.style.fontSize = '1.1rem';
+    titleDiv.textContent = ach.title;
+    
+    textDiv.appendChild(labelDiv);
+    textDiv.appendChild(titleDiv);
+    toast.appendChild(textDiv);
+    
     document.body.appendChild(toast);
     
     // Trigger animation
@@ -241,26 +269,35 @@ window.QuizStats = {
       ? Math.round((this.data.correctAnswers / this.data.questionsAnswered) * 100) 
       : 0;
 
-    container.innerHTML = `
-      <div class="stats-widget">
-        <a href="estadisticas/index.html?tab=tests" class="stat-item" style="text-decoration:none;">
-          <span class="stat-value">${this.data.quizzesCompleted}</span>
-          <span class="stat-label">Tests</span>
-        </a>
-        <a href="estadisticas/index.html?tab=preguntas" class="stat-item" style="text-decoration:none;">
-          <span class="stat-value">${this.data.questionsAnswered}</span>
-          <span class="stat-label">Preguntas</span>
-        </a>
-        <div class="stat-item">
-          <span class="stat-value">${accuracy}%</span>
-          <span class="stat-label">Precisión</span>
-        </div>
-        <a href="estadisticas/index.html?tab=logros" class="stat-item" style="text-decoration:none;" title="${this.data.achievements.length} de ${Object.keys(this.ACHIEVEMENTS).length}">
-          <span class="stat-value">${this.data.achievements.length}</span>
-          <span class="stat-label">Logros 🏆</span>
-        </a>
-      </div>
-    `;
+    container.innerHTML = '';
+    const widget = document.createElement('div');
+    widget.className = 'stats-widget';
+    
+    const createItem = (value, label, href, title) => {
+      const el = href ? document.createElement('a') : document.createElement('div');
+      el.className = 'stat-item';
+      if (href) { el.href = href; el.style.textDecoration = 'none'; }
+      if (title) { el.title = title; }
+      
+      const valSpan = document.createElement('span');
+      valSpan.className = 'stat-value';
+      valSpan.textContent = value;
+      
+      const lblSpan = document.createElement('span');
+      lblSpan.className = 'stat-label';
+      lblSpan.textContent = label;
+      
+      el.appendChild(valSpan);
+      el.appendChild(lblSpan);
+      return el;
+    };
+    
+    widget.appendChild(createItem(this.data.quizzesCompleted, 'Tests', 'estadisticas/index.html?tab=tests'));
+    widget.appendChild(createItem(this.data.questionsAnswered, 'Preguntas', 'estadisticas/index.html?tab=preguntas'));
+    widget.appendChild(createItem(`${accuracy}%`, 'Precisión'));
+    widget.appendChild(createItem(this.data.achievements.length, 'Logros 🏆', 'estadisticas/index.html?tab=logros', `${this.data.achievements.length} de ${Object.keys(this.ACHIEVEMENTS).length}`));
+    
+    container.appendChild(widget);
   }
 };
 

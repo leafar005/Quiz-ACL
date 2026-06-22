@@ -27,8 +27,8 @@ const QUESTIONS = [
     type: 'vf',
     question: 'Una auditoría interna es aseguramiento de calidad.',
     options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. Una auditoría interna es aseguramiento de calidad (QA). Verifica que se siguen los procesos, procedimientos, plantillas y registros del SGC. NO comprueba si el producto está técnicamente bien — eso es control de calidad (QC).',
+    correct: 0,
+    justification: 'VERDADERO. Una auditoría interna es aseguramiento de calidad (QA). Verifica que se siguen los procesos, procedimientos, plantillas y registros del SGC. NO comprueba si el producto está técnicamente bien — eso es control de calidad (QC).',
     trap: true
   },
   {

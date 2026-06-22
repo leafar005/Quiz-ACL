@@ -45,9 +45,7 @@
     bindResultsEvents();
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('resume') === 'true' && localStorage.getItem('paused_test')) {
-      const saved = JSON.parse(localStorage.getItem('paused_test'));
-      window.resumePausedTest(saved.state);
-      window.history.replaceState({}, document.title, window.location.pathname);
+      try { const saved = JSON.parse(localStorage.getItem('paused_test')); window.resumePausedTest(saved.state); window.history.replaceState({}, document.title, window.location.pathname); } catch(e) { localStorage.removeItem('paused_test'); }
       return;
     }
   }
@@ -157,7 +155,7 @@
 
       if (mode === 'random') {
         const urlParams = new URLSearchParams(window.location.search);
-        const numQuestions = parseInt(urlParams.get('num')) || 50;
+        const numQuestions = parseInt(urlParams.get('num')) || 20;
         pool = pool.slice(0, numQuestions);
       }
 
@@ -446,6 +444,9 @@
   }
 
   function formatJustification(text) {
+    text = text.replace(/[&<>"']/g, m => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
+    }[m]));
     // Bold key terms
     return text
       .replace(/FALSO/g, '<strong style="color:#ef4444">FALSO</strong>')
@@ -558,7 +559,7 @@
       }
 
       if (!state.answered) {
-        const keyMap = { '1': 0, '2': 1, '3': 2, '4': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3 };
+        const keyMap = { '1': 0, '2': 1, '3': 2, '4': 3, '5': 4, '6': 5, 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5 };
         const idx = keyMap[e.key.toLowerCase()];
         if (idx !== undefined && idx < state.questions[state.currentIndex].options.length) {
           handleAnswer(idx);
@@ -581,7 +582,7 @@
     const correct = state.correctCount;
     const wrong = state.wrongCount;
     const pct = Math.round((correct / total) * 100);
-    const elapsed = Math.floor((Date.now() - state.startTime) / 1000);
+    const elapsed = Math.floor((Date.now() - state.startTime) / 1000) + Math.floor((state.accumulatedTime || 0) / 1000);
     let quizName = 'Simulacro';
     if (state.mode === 'all') quizName = 'Completo';
     else if (state.mode === 'traps') quizName = 'Solo Trampas';
@@ -731,6 +732,8 @@
 
   function bindReviewFilters() {
     $$('.review-filter').forEach(btn => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = "true";
       btn.addEventListener('click', () => {
         $$('.review-filter').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');

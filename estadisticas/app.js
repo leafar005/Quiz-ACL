@@ -1,6 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Add small delay to ensure QuizStats is fully loaded
-  setTimeout(renderPage, 50);
+function initEstadisticas() {
+  if (!window.QuizStats) {
+    setTimeout(initEstadisticas, 50);
+    return;
+  }
+  setTimeout(renderPage, 0);
 
   // Tabs logic
   const tabs = document.querySelectorAll('.tab-btn');
@@ -28,7 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetBtn = document.querySelector(`.tab-btn[data-target="${requestedTab}"]`);
     if (targetBtn) targetBtn.click();
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initEstadisticas);
+} else {
+  initEstadisticas();
+}
+
+
 
 function formatDate(ms) {
   const d = new Date(ms);
